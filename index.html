@@ -116,11 +116,10 @@
                     <!-- Cuadro Derecho: Vídeo Demostración Real -->
                     <div class="media-box-parallel">
                         <h3>Hardware Demo Video</h3>
-                        <div class="video-container-parallel">
-                            <video controls class="promo-video">
-                                <source src="https://drive.google.com/file/d/1Lbwr3VGnf4c44yT6YB0k-n2_udmUiA1D/view?usp=drive_link" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                        <div class="video-container-parallel" style="display: flex; align-items: center; justify-content: center; min-height: 200px; background: #000; border-radius: 4px;">
+                            <a href="https://google.com" target="_blank" style="background-color: #007bff; color: white; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; display: inline-block; font-family: inherit;">
+                                ▶ Open Video in Google Drive
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -143,27 +142,12 @@
                         <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
                         <p class="gift-note">💡 <em>Tip: Please choose <strong>"Sending to a friend"</strong> (Send as a gift) so PayPal won't charge any commercial fees!</em></p>
                         <a href="https://paypal.me" target="_blank" class="paypal-btn">🎁 Send Support via PayPal</a>
-                        <span class="paypal-email-backup">Account backup: <code>erkbradejerez@hotmail.com</code></span>
                     </div>
                 </div>
             </section>
-
         </main>
     </div>
 
     <script src="scripts.js"></script>
-    <script>
-        function switchTab(event, tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-            
-            if (window.innerWidth <= 768) {
-                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
 </body>
 </html>
