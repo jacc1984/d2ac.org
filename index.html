@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDR Motor Control - TeraHertz (c) Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Barra lateral izquierda -->
+        <aside class="sidebar">
+            <div class="brand-title">
+                <h1>Digital to Analog Converter</h1>
+                <span class="subtitle"><strong class="highlight-brand">TeraHertz</strong>&copy; Projects</span>
+            </div>
+            
+            <nav class="menu">
+                <button class="menu-btn active" onclick="switchTab(event, 'proyecto1')">📄 Main Project</button>
+                <button class="menu-btn" onclick="switchTab(event, 'circuito')">🎛️ LDR Motor Control</button>
+                <button class="menu-btn" onclick="switchTab(event, 'descargas')">💾 Downloads & Support</button>
+            </nav>
+        </aside>
+
+        <!-- Contenido Central Dinámico -->
+        <main class="content">
+            
+            <!-- Folio 1: Proyecto Principal -->
+            <section id="proyecto1" class="tab-content active">
+                <h2>Project Overview</h2>
+                
+                <div class="grid-layout">
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Hey folks! How are you doing?</p>
+                            <p>First of all, sorry for deleting my blog without any sense: <code class="old-blog">://wordpress.com</code>...</p>
+                            <p>So I'm back to upload some cool projects with most of schools could feel freaked out.</p>
+                            <p>Thanks to some of my friends I discovered a nice library (<strong>inpout32.dll</strong>) compatible with Windows. This library can be embedded into the IDE Called <strong>Borland C++ 6.0</strong>.</p>
+                            <p>The applications built with this IDE can also be executed under Linux Operating Systems with <strong>Wine</strong>.</p>
+                            <p>The sources of my work are for free and you could download it just at the bottom of this site.</p>
+                        </div>
+
+                        <div class="ide-download-box">
+                            <p>🔧 Need Borland C++ 6.0 to compile?</p>
+                            <a href="https://winworldpc.com" target="_blank" class="winworld-btn">💿 Get IDE on WinWorld</a>
+                        </div>
+                    </div>
+
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Screenshot (Widescreen Format)</h3>
+                            <div class="screenshot-container">
+                                <img src="API screenshot.JPG" alt="Application Screenshot" class="screenshot">
+                            </div>
+                        </div>
+                        
+                        <div class="media-box">
+                            <h3>Demonstration Video</h3>
+                            <div class="video-container">
+                                <video controls class="promo-video">
+                                    <source src="API video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-download">
+                    <p>🚀 Ready to explore the code?</p>
+                    <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>📦 Download Source Code (.ZIP)</a>
+                </div>
+            </section>
+
+            <!-- Folio 2: Simulador de Circuito Interactivo -->
+            <section id="circuito" class="tab-content">
+                <h2>LDR Motor Control</h2>
+                <p class="section-subtitle">Simulate real-time variables and visual responses within the schematic workspace or watch the live demo.</p>
+                
+                <div class="grid-layout match-height">
+                    <!-- Cuadro Izquierdo: El Simulador Activo -->
+                    <div class="simulator-box">
+                        <h3>Interactive Schematic</h3>
+                        <div class="simulator-canvas">
+                            <!-- Base del plano -->
+                            <img id="Schematics" src="Schematics.png" alt="Circuit Schematics">
+                            
+                            <!-- Flechas indicadoras LDR -->
+                            <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR Light 1">
+                            <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR Light 2">
+                            <img id="Light_3" src="LDR_Arrow_Light.jpg" alt="LDR Light 3">
+                            <img id="Light_4" src="LDR_Arrow_Light.jpg" alt="LDR Light 4">
+                            <img id="Light_5" src="LDR_Arrow_Light.jpg" alt="LDR Light 5">
+                            <img id="Light_6" src="LDR_Arrow_Light.jpg" alt="LDR Light 6">
+
+                            <!-- Ventilador CAD Realista lateral -->
+                            <img id="CAD_Fan" src="Sherry_CAD_Fan.png" alt="CAD Fan">
+                            
+                            <!-- El Motor Activo superpuesto en el motor del ESQUEMA -->
+                            <img id="Engine_ON" src="Cropped_Engine(Blued).png" alt="Engine Status">
+
+                            <div id="Engine_Center"></div>
+
+                            <!-- Panel de Control Superior -->
+                            <div class="control-panel-top">
+                                <button id="Button_Decrease" class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
+                                <button id="Button_Increase" class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
+                                <p id="Current_Label">LDR Current 0mA</p>
+                            </div>
+                            
+                            <p id="Clicks_Counter" style="visibility: hidden;">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Cuadro Derecho: Vídeo Demostración Real -->
+                    <div class="media-box-parallel">
+                        <h3>Hardware Demo Video</h3>
+                        <div class="video-container-parallel">
+                            <video controls class="promo-video">
+                                <source src="20250220_045621.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 3: Descargas y Soporte -->
+            <section id="descargas" class="tab-content">
+                <h2>Downloads & Support</h2>
+                <p class="section-subtitle">Get the complete source files or support the development of TeraHertz Projects.</p>
+                
+                <div class="actions-container">
+                    <div class="action-card">
+                        <h3>Source Code</h3>
+                        <p>Download the full Borland C++ 6.0 project files.</p>
+                        <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>📦 Download Fuentes (.ZIP)</a>
+                    </div>
+                    
+                    <div class="action-card">
+                        <h3>Support the Project</h3>
+                        <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
+                        <p class="gift-note">💡 <em>Tip: Please choose <strong>"Sending to a friend"</strong> (Send as a gift) so PayPal won't charge any commercial fees!</em></p>
+                        <a href="https://paypal.me" target="_blank" class="paypal-btn">🎁 Send Support via PayPal</a>
+                        <span class="paypal-email-backup">Account backup: <code>erkbradejerez@hotmail.com</code></span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if (window.innerWidth <= 768) {
+                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
