@@ -117,10 +117,7 @@
                     <div class="media-box-parallel">
                         <h3>Hardware Demo Video</h3>
                         <div class="video-container-parallel">
-                            <video controls class="promo-video">
-                                <source src="https://drive.google.com/file/d/1Lbwr3VGnf4c44yT6YB0k-n2_udmUiA1D/view?usp=drive_link" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                            <img src="https://1drv.ms/v/c/d665801db985f9df/IQQADC2RkctJTJUHeMYau0NfAdHoln5o1n-jh6d0kMFlI20?width=1920&height=1080">
                         </div>
                     </div>
                 </div>
@@ -142,15 +139,28 @@
                         <h3>Support the Project</h3>
                         <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
                         <p class="gift-note">💡 <em>Tip: Please choose <strong>"Sending to a friend"</strong> (Send as a gift) so PayPal won't charge any commercial fees!</em></p>
-                        <!-- Cambia el '#' por tu enlace real de PayPal de ser necesario -->
-                        <a href="https://paypal.me" target="_blank" class="download-btn">💝 Support via PayPal</a>
+                        <a href="https://paypal.me" target="_blank" class="paypal-btn">🎁 Send Support via PayPal</a>
+                        <span class="paypal-email-backup">Account backup: <code>erkbradejerez@hotmail.com</code></span>
                     </div>
                 </div>
             </section>
+
         </main>
     </div>
 
-    <!-- 🌟 ENLACE CRUCIAL AL SCRIPT JAVASCRIPT -->
     <script src="scripts.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if (window.innerWidth <= 768) {
+                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
