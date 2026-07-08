@@ -1,45 +1,151 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital to Analog Converter - TeraHertz Projects</title>
+    <title>LDR Motor Control - TeraHertz (c) Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Digital to Analog Converter</h1>
-        <h2>Proyectos TeraHertz - d2ac.org</h2>
-    </header>
 
-    <main>
-        <section class="content">
-            <h3>Demostración del Circuito y Adquisición de Datos</h3>
-            <p>Proyecto de desarrollo de tarjeta de adquisición de datos mediante puerto paralelo LPT, control de motor e instrumentación con sensores LDR.</p>
+    <div class="app-container">
+        <!-- Barra lateral izquierda -->
+        <aside class="sidebar">
+            <div class="brand-title">
+                <h1>Digital to Analog Converter</h1>
+                <span class="subtitle"><strong class="highlight-brand">TeraHertz</strong>&copy; Projects</span>
+            </div>
             
-            <!-- Bloque del vídeo oficial en Google Drive -->
-            <div style="text-align: center; margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;">
-                <p style="margin-bottom: 15px; font-weight: bold; color: #333;">Visualiza el vídeo completo del funcionamiento del circuito:</p>
-                <a href="https://google.com" target="_blank" style="background-color: #007bff; color: white; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px rgba(0,123,255,0.15); transition: background-color 0.2s;">
-                    ▶ Ver Vídeo Demostración del Circuito (Google Drive)
-                </a>
-            </div>
+            <nav class="menu">
+                <button class="menu-btn active" onclick="switchTab(event, 'proyecto1')">📄 Main Project</button>
+                <button class="menu-btn" onclick="switchTab(event, 'circuito')">🎛️ LDR Motor Control</button>
+                <button class="menu-btn" onclick="switchTab(event, 'descargas')">💾 Downloads & Support</button>
+            </nav>
+        </aside>
 
-            <!-- Galería de imágenes técnica -->
-            <div class="gallery" style="margin-top: 30px;">
-                <h3>Documentación Gráfica del Proyecto</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <img src="Schematics.png" alt="Esquema del Circuito" style="width: 100%; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    <img src="CAD_Fan.png" alt="Diseño CAD Ventilador" style="width: 100%; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    <img src="Cropped_Engine.png" alt="Motor del Circuito" style="width: 100%; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <!-- Contenido Central Dinámico -->
+        <main class="content">
+            
+            <!-- Folio 1: Proyecto Principal -->
+            <section id="proyecto1" class="tab-content active">
+                <h2>Project Overview</h2>
+                
+                <div class="grid-layout">
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Hey folks! How are you doing?</p>
+                            <p>First of all, sorry for deleting my blog without any sense: <code class="old-blog">://wordpress.com</code>...</p>
+                            <p>So I'm back to upload some cool projects with most of schools could feel freaked out.</p>
+                            <p>Thanks to some of my friends I discovered a nice library (<strong>inpout32.dll</strong>) compatible with Windows. This library can be embedded into the IDE Called <strong>Borland C++ 6.0</strong>.</p>
+                            <p>The applications built with this IDE can also be executed under Linux Operating Systems with <strong>Wine</strong>.</p>
+                            <p>The sources of my work are for free and you could download it just at the bottom of this site.</p>
+                        </div>
+
+                        <div class="ide-download-box">
+                            <p>🔧 Need Borland C++ 6.0 to compile?</p>
+                            <a href="https://winworldpc.com" target="_blank" class="winworld-btn">💿 Get IDE on WinWorld</a>
+                        </div>
+                    </div>
+
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Screenshot (Widescreen Format)</h3>
+                            <div class="screenshot-container">
+                                <img src="API screenshot.JPG" alt="Application Screenshot" class="screenshot">
+                            </div>
+                        </div>
+                        
+                        <div class="media-box">
+                            <h3>Demonstration Video</h3>
+                            <div class="video-container" style="display: flex; align-items: center; justify-content: center; min-height: 150px; background: #1a1a1a; border-radius: 6px;">
+                                <a href="https://google.com" target="_blank" style="background-color: #007bff; color: white; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; font-size: 0.9em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                                    ▶ Stream Demo Video (Google Drive)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 TeraHertz Projects - d2ac.org. Todos los derechos reservados.</p>
-    </footer>
+                <div class="bottom-download">
+                    <p>🚀 Ready to explore the code?</p>
+                    <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>📦 Download Source Code (.ZIP)</a>
+                </div>
+            </section>
+
+            <!-- Folio 2: Simulador de Circuito Interactivo -->
+            <section id="circuito" class="tab-content">
+                <h2>LDR Motor Control</h2>
+                <p class="section-subtitle">Simulate real-time variables and visual responses within the schematic workspace or watch the live demo.</p>
+                
+                <div class="grid-layout match-height">
+                    <!-- Cuadro Izquierdo: El Simulador Activo -->
+                    <div class="simulator-box">
+                        <h3>Interactive Schematic</h3>
+                        <div class="simulator-canvas">
+                            <!-- Base del plano -->
+                            <img id="Schematics" src="Schematics.png" alt="Circuit Schematics">
+                            
+                            <!-- Flechas indicadoras LDR -->
+                            <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR Light 1">
+                            <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR Light 2">
+                            <img id="Light_3" src="LDR_Arrow_Light.jpg" alt="LDR Light 3">
+                            <img id="Light_4" src="LDR_Arrow_Light.jpg" alt="LDR Light 4">
+                            <img id="Light_5" src="LDR_Arrow_Light.jpg" alt="LDR Light 5">
+                            <img id="Light_6" src="LDR_Arrow_Light.jpg" alt="LDR Light 6">
+
+                            <!-- Ventilador CAD Realista lateral -->
+                            <img id="CAD_Fan" src="Sherry_CAD_Fan.png" alt="CAD Fan">
+                            
+                            <!-- El Motor Activo superpuesto en el motor del ESQUEMA -->
+                            <img id="Engine_ON" src="Cropped_Engine(Blued).png" alt="Engine Status">
+
+                            <div id="Engine_Center"></div>
+
+                            <!-- Panel de Control Superior -->
+                            <div class="control-panel-top">
+                                <button id="Button_Decrease" class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
+                                <button id="Button_Increase" class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
+                                <p id="Current_Label">LDR Current 0mA</p>
+                            </div>
+                            
+                            <p id="Clicks_Counter" style="visibility: hidden;">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Cuadro Derecho: Vídeo Demostración Real -->
+                    <div class="media-box-parallel">
+                        <h3>Hardware Demo Video</h3>
+                        <div class="video-container-parallel" style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: #1a1a1a; border-radius: 6px;">
+                            <a href="https://google.com" target="_blank" style="background-color: #007bff; color: white; padding: 14px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                                ▶ Stream Hardware Video (Google Drive)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 3: Descargas y Soporte -->
+            <section id="descargas" class="tab-content">
+                <h2>Downloads & Support</h2>
+                <p class="section-subtitle">Get the complete source files or support the development of TeraHertz Projects.</p>
+                
+                <div class="actions-container">
+                    <div class="action-card">
+                        <h3>Source Code</h3>
+                        <p>Download the full Borland C++ 6.0 project files.</p>
+                        <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>📦 Download Fuentes (.ZIP)</a>
+                    </div>
+                    
+                    <div class="action-card">
+                        <h3>Support the Project</h3>
+                        <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
+                        <p class="gift-note">💡 <em>Tip: Please choose <strong>"Sending to a friend"</strong> (Send as a gift) so PayPal won't charge any commercial fees!</em></p>
+                        <a href="https://paypal.me" target="_blank" class="paypal-btn">🎁 Send Support via PayPal</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
