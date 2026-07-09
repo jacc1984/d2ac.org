@@ -464,6 +464,110 @@ h2 {
     100% { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   MÓVIL TOTALMENTE FLUIDO (Equivalente a: If android -> Elements.fit.width)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Forzar una única columna vertical en toda la página */
+    .app-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden; /* Evita cualquier desplazamiento lateral molesto */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 2. Barra lateral arriba, estirada al 100% de ancho */
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box;
+        padding: 20px 15px;
+    }
+
+    .menu {
+        display: flex !important;
+        flex-direction: row !important; /* Botones uno al lado del otro en horizontal */
+        flex-wrap: wrap; /* Si no caben, bajan de renglón limpiamente */
+        gap: 8px;
+        width: 100%;
+    }
+
+    .menu-btn {
+        flex: 1 1 calc(50% - 8px); /* Distribuye los botones en pares equilibrados */
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* 3. Área de contenido principal fluida */
+    .content {
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 15px !important;
+    }
+
+    /* 4. Romper las rejillas paralelas y apilarlas en una columna vertical */
+    .grid-layout, 
+    .grid-layout.match-height {
+        display: flex !important;
+        flex-direction: column !important; /* Desactiva las columnas de PC */
+        gap: 25px !important; /* Da un respiro visual entre elementos */
+        width: 100% !important;
+    }
+
+    /* 5. Asegurar el orden: Texto arriba, Imagen de panel de control debajo y más grande */
+    .info-column, 
+    .media-column,
+    .simulator-box,
+    .media-box-parallel {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Hacer la captura/panel más grande bajo el texto */
+    .screenshot-container img.screenshot {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        display: block;
+        margin: 10px auto 0 auto; /* Centrado y con margen superior */
+        border-radius: 6px;
+    }
+
+    /* 6. Evitar el colapso y solapamiento del circuito interactivo y del vídeo de OneDrive */
+    .simulator-canvas {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        overflow: hidden; /* Mantiene fijas las coordenadas absolutas de tus componentes */
+    }
+
+    .simulator-canvas img#Schematics {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    /* El vídeo de OneDrive ya no se solapará, se colocará ordenadamente debajo */
+    .video-container-parallel {
+        width: 100% !important;
+        height: auto !important; /* Elimina el height: 100% que causaba el conflicto */
+        margin-top: 10px;
+    }
+
+    .video-container-parallel .winworld-btn {
+        width: 100% !important;
+        min-height: 70px !important; /* Formato estilizado y ergonómico para pulsar en pantallas táctiles */
+        box-sizing: border-box;
+    }
+}
+
+
 /* Adaptación para móviles */
 @media (max-width: 768px) {
     body { overflow: auto; height: auto; }
