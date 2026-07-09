@@ -18,7 +18,7 @@ body {
     color: var(--text-main);
     line-height: 1.4;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Mantiene la ventana fija en PC */
 }
 
 .app-container {
@@ -27,6 +27,7 @@ body {
     width: 100vw;
 }
 
+/* --- BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -98,6 +99,7 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
+/* --- PANEL DE CONTENIDO PRINCIPAL --- */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -131,6 +133,7 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* --- REJILLAS Y COLUMNAS --- */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -156,6 +159,8 @@ h2 {
     flex-direction: column;
     gap: 20px;
 }
+
+
 /* ==========================================================================
    PARTE 2: TARJETAS, MULTIMEDIA, CIRCUITO Y DIRECTIVA MÓVIL DEFINITIVA
    ========================================================================== */
@@ -375,7 +380,6 @@ h2 {
     z-index: 1;
 }
 
-/* Posiciones de las 6 flechas de luz LDR superpuestas en el esquema */
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
@@ -383,7 +387,7 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
-/* PANEL DE CONTROL SUPERIOR (Barra flotante centradita) */
+/* PANEL DE CONTROL SUPERIOR (Fijo sin parpadeos de tamaño) */
 .control-panel-top {
     position: absolute;
     top: 15px;
@@ -397,6 +401,12 @@ h2 {
     padding: 8px 16px;
     border-radius: 6px;
     border: 1px solid #3d3d45;
+    
+    width: 320px; 
+    min-width: 320px;
+    max-width: 320px;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 #Current_Label {
@@ -408,7 +418,6 @@ h2 {
     white-space: nowrap;
 }
 
-/* FORMATO MEJORADO: Estilo Encendido/Apagado para los controles del LDR */
 .circuit-btn {
     padding: 6px 14px;
     font-size: 11px;
@@ -420,7 +429,7 @@ h2 {
     transition: all 0.1s ease;
 }
 
-/* Botón (-) Apagado: Formato blanco puro con borde sutil */
+/* Botón (-) Apagado: Blanco y gris oscuro */
 .circuit-btn.dec {
     background-color: #ffffff;
     color: #1e1e24;
@@ -430,7 +439,7 @@ h2 {
 .circuit-btn.dec:hover { background-color: #f8fafc; }
 .circuit-btn.dec:active { border-bottom-width: 1px; transform: translateY(2px); }
 
-/* Botón (+) Encendido: Formato azul eléctrico con texto blanco */
+/* Botón (+) Encendido: Azul y blanco */
 .circuit-btn.inc {
     background-color: #007acc;
     color: #ffffff;
@@ -439,19 +448,18 @@ h2 {
 .circuit-btn.inc:hover { background-color: #0062a3; }
 .circuit-btn.inc:active { border-bottom-width: 0px; transform: translateY(3px); }
 
-/* EL TESTIGO AZÚL DEL MOTOR: Reducido concéntricamente para calzar en el centro */
+/* TESTIGO AZUL DEL MOTOR: Modificado con tus coordenadas exactas (-30px arriba, +50px derecha) */
 #Engine_ON {
     position: absolute;
-    top: 55.5%; /* Coordinada vertical exacta sobre el motor del esquema */
-    left: 28.2%; /* Coordenada horizontal exacta sobre el motor del esquema */
-    width: 7%;   /* Reducido al tamaño pequeño real del núcleo */
+    top: calc(55.5% - 30px);   
+    left: calc(28.2% + 50px);  
+    width: 7%;                 
     height: auto;
     z-index: 3;
     visibility: hidden;
     transform: translate(-50%, -50%);
 }
 
-/* Ventilador CAD lateral */
 #CAD_Fan {
     position: absolute;
     top: 25%;
@@ -462,7 +470,6 @@ h2 {
     transform-origin: center center;
 }
 
-/* Definición de la animación de rotación infinita */
 @keyframes Rotating {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
