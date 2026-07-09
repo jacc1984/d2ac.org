@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <!-- v=3.3: Forzamos la actualización inmediata de la página -->
-    <link rel="stylesheet" href="style.css?v=3.3">
+    <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -45,11 +44,11 @@
                             <a href="https://winworldpc.com" target="_blank" class="winworld-btn">Get IDE on WinWorld</a>
                         </div>
 
-                        <!-- NUEVA TARJETA INTEGRADA: Con la URL directa a tu archivo real de GitHub -->
+                        <!-- TARJETA INTEGRADA DEFINITIVA: Con ruta local directa -->
                         <div class="media-box" style="margin-top: 15px;">
                             <h3>PRO Acquisition Data Card</h3>
                             <div class="screenshot-container">
-                                <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="screenshot">
+                                <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="screenshot">
                             </div>
                         </div>
                     </div>
@@ -135,17 +134,7 @@
         </main>
     </div>
 
+    <!-- Vinculación limpia de scripts externos -->
     <script src="scripts.js"></script>
-    <script>
-        function switchTab(event, tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-            if (window.innerWidth <= 768) {
-                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
 </body>
 </html>
