@@ -386,7 +386,7 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
-/* PANEL DE CONTROL SUPERIOR: Con margen extra para evitar que el texto "30 mA" se desborde */
+/* PANEL DE CONTROL SUPERIOR (Espaciado amplio para evitar recortes del texto) */
 .control-panel-top {
     position: absolute;
     top: 15px;
@@ -448,11 +448,11 @@ h2 {
 .circuit-btn.inc:hover { background-color: #0062a3; }
 .circuit-btn.inc:active { border-bottom-width: 0px; transform: translateY(3px); }
 
-/* TESTIGO AZUL DEL MOTOR: Ajustado con precisión (+21px extra a la derecha) */
+/* TESTIGO AZUL DEL MOTOR: Centrado horizontal definitivo (+81px a la derecha) */
 #Engine_ON {
     position: absolute;
     top: calc(55.5% - 30px);   
-    left: calc(28.2% + 71px); /* Modificado de +50px a +71px para centrarlo en horizontal */
+    left: calc(28.2% + 81px); /* Modificado a +81px para que calce perfecto en el eje horizontal */
     width: 7%;                 
     height: auto;
     z-index: 3;
@@ -511,4 +511,3 @@ h2 {
         box-sizing: border-box;
     }
 }
-
