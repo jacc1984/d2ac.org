@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <!-- Cambiado a v=2.0 para obligar a Netlify a actualizar el diseño -->
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
@@ -26,7 +27,7 @@
         <!-- Contenido Central Dinámico -->
         <main class="content">
             
-            <!-- Folio 1: Proyecto Principal -->
+            <!-- Folio 1: Proyecto Principal (LPT DB25 Control) -->
             <section id="proyecto1" class="tab-content active">
                 <h2>Project Overview</h2>
                 
@@ -67,18 +68,21 @@
                     </div>
                 </div>
 
-                <div class="bottom-download">
-                    <p>Ready to explore the code?</p>
-                    <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Source Code (.ZIP)</a>
-                </div>
-
-                <!-- SECCIÓN DE LA IMAGEN EN GITHUB (Aparece por defecto al final) -->
-                <div class="pro-card-container">
-                    <h3>PRO Acquisition Data Card</h3>
-                    <div class="pro-card-box">
-                        <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="pro-card-img">
+                <!-- CONTENEDOR INTEGRADO: Forzamos la descarga y la tarjeta juntas en un único bloque sólido -->
+                <div class="bottom-download-wrapper">
+                    <div class="bottom-download">
+                        <p>Ready to explore the code?</p>
+                        <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Source Code (.ZIP)</a>
+                    </div>
+                    
+                    <div class="pro-card-container">
+                        <h3>PRO Acquisition Data Card</h3>
+                        <div class="pro-card-box">
+                            <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="pro-card-img">
+                        </div>
                     </div>
                 </div>
+
             </section>
 
             <!-- Folio 2: Simulador de Circuito Interactivo -->
@@ -91,37 +95,26 @@
                     <div class="simulator-box">
                         <h3>Interactive Schematic</h3>
                         <div class="simulator-canvas">
-                            <!-- Base del plano -->
                             <img id="Schematics" src="Schematics.png" alt="Circuit Schematics">
-                            
-                            <!-- Flechas indicadoras LDR -->
                             <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR Light 1">
                             <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR Light 2">
                             <img id="Light_3" src="LDR_Arrow_Light.jpg" alt="LDR Light 3">
                             <img id="Light_4" src="LDR_Arrow_Light.jpg" alt="LDR Light 4">
                             <img id="Light_5" src="LDR_Arrow_Light.jpg" alt="LDR Light 5">
                             <img id="Light_6" src="LDR_Arrow_Light.jpg" alt="LDR Light 6">
-
-                            <!-- Ventilador CAD Realista lateral -->
                             <img id="CAD_Fan" src="Sherry_CAD_Fan.png" alt="CAD Fan">
-                            
-                            <!-- El Motor Activo superpuesto en el motor del ESQUEMA -->
                             <img id="Engine_ON" src="Cropped_Engine(Blued).png" alt="Engine Status">
-
                             <div id="Engine_Center"></div>
-
-                            <!-- Panel de Control Superior -->
                             <div class="control-panel-top">
                                 <button id="Button_Decrease" class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
                                 <button id="Button_Increase" class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
                                 <p id="Current_Label">LDR Current 0mA</p>
                             </div>
-                            
                             <p id="Clicks_Counter" style="visibility: hidden;">0</p>
                         </div>
                     </div>
 
-                    <!-- Cuadro Derecho: Vídeo Demostración Real con estilos adaptados -->
+                    <!-- Cuadro Derecho: Vídeo Demostración Real -->
                     <div class="media-box-parallel">
                         <h3>Hardware Demo Video</h3>
                         <div class="video-container-parallel" style="display: flex; flex-direction: column; justify-content: center; width: 100%;">
@@ -130,7 +123,7 @@
                                rel="noopener noreferrer" 
                                class="winworld-btn" 
                                style="display: flex; justify-content: center; align-items: center; min-height: 80px; width: 100%; box-sizing: border-box; text-decoration: none; text-align: center; font-size: 1.1rem; padding: 15px; border-radius: 6px;">
-                               Watch Demo on OneDrive
+                               🎬 Watch Demo on OneDrive 🚀
                             </a>
                         </div>
                     </div>
