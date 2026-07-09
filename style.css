@@ -308,7 +308,7 @@ h2 {
 
 .bottom-download {
     padding: 15px 20px;
-    background: #1e1e24; /* Cambiado a fondo oscuro interno */
+    background: #1e1e24; 
     border-radius: 6px;
     border-left: 4px solid var(--accent-color);
     display: flex;
@@ -386,7 +386,7 @@ h2 {
 #Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; }
 
 /* ==========================================================================
-   PARTE 3: ENTORNO SEGURO PARA LA PRO ACQUISITION CARD
+   PARTE 3: ENTORNO SEGURO Y EFECTOS PARA LA PRO ACQUISITION CARD
    ========================================================================== */
 .bottom-download-wrapper {
     margin-top: 25px;
@@ -399,7 +399,7 @@ h2 {
     gap: 25px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 40px; /* Forzamos un colchón inferior para evitar recortes invisibles */
+    margin-bottom: 40px; 
 }
 
 .pro-card-container {
@@ -421,7 +421,7 @@ h2 {
 
 .pro-card-box {
     width: 100%;
-    background: #111116; /* Mismo fondo oscuro de tus videos de la derecha */
+    background: #111116; 
     border-radius: 8px;
     border: 1px solid #2d2d35;
     overflow: hidden;
@@ -432,10 +432,27 @@ h2 {
     box-sizing: border-box;
 }
 
+/* Enlace contenedor interactivo */
+.pro-card-link {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Imagen base con transiciones suaves */
 .pro-card-img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
     display: block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
+
+/* Efecto hover premium para avisar que es clicable */
+.pro-card-img:hover {
+    transform: scale(1.015);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
