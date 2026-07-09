@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PARTE 1: CONFIGURACIÓN GENERAL Y ESTRUCTURA DE ESCRITORIO (PC)
+   ========================================================================== */
+
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -14,15 +18,16 @@ body {
     color: var(--text-main);
     line-height: 1.4;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Mantiene la ventana fija en PC */
 }
 
 .app-container {
     display: flex;
     height: 100vh;
     width: 100vw;
-}
+} cleavage
 
+/* --- BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -94,6 +99,7 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
+/* --- PANEL DE CONTENIDO PRINCIPAL --- */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -127,6 +133,7 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* --- REJILLAS Y COLUMNAS --- */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -151,339 +158,4 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-/* --- TARJETAS (CARDS) --- */
-.intro-card {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-}
-
-.intro-card p {
-    font-size: 14px;
-    color: #cbd5e1;
-    margin: 0 0 10px 0;
-}
-
-.intro-card p:last-child {
-    margin-bottom: 0;
-}
-
-.old-blog {
-    background: #111116;
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: #ff79c6;
-    font-family: monospace;
-}
-
-.ide-download-box {
-    background: #16161c;
-    border: 1px solid #2d2d35;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-
-.ide-download-box p {
-    margin: 0;
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-/* --- MULTIMEDIA GENERAL --- */
-.media-box h3, .simulator-box h3, .media-box-parallel h3 {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 8px 0;
-}
-
-.screenshot-container, .video-container {
-    width: 100%;
-    background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-    aspect-ratio: 16 / 9; 
-}
-
-.video-container-parallel {
-    width: 100%;
-    height: 480px; 
-    background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-}
-
-.screenshot {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    display: block;
-    background-color: #111116; 
-}
-
-.promo-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: #111116;
-}
-
-/* --- BOTONES MECÁNICOS 3D --- */
-.download-btn, .paypal-btn, .winworld-btn {
-    display: inline-block;
-    padding: 11px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 12px;
-    text-align: center;
-    transition: all 0.1s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border: none;
-}
-
-.download-btn { 
-    background-color: #28a745; 
-    color: white; 
-    border-bottom: 4px solid #1e7e34;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-.download-btn:hover { background-color: #2dbc4e; }
-.download-btn:active {
-    border-bottom-width: 0px;
-    transform: translateY(4px);
-    box-shadow: 0 0px 2px rgba(0,0,0,0.5);
-}
-
-.winworld-btn {
-    background-color: #4a5568;
-    color: #ffffff;
-    border-bottom: 4px solid #2d3748;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    white-space: nowrap;
-}
-.winworld-btn:hover { background-color: #5a67d8; border-bottom-color: #4c51bf; }
-.winworld-btn:active {
-    border-bottom-width: 0px;
-    transform: translateY(4px);
-    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
-}
-
-.paypal-btn { 
-    background-color: #ffc107; 
-    color: #111; 
-    width: 100%;
-    border-bottom: 4px solid #d39e00; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-.paypal-btn:hover { background-color: #ffca2c; }
-.paypal-btn:active {
-    border-bottom-width: 0px;
-    transform: translateY(4px);
-    box-shadow: 0 0px 2px rgba(0,0,0,0.5);
-}
-
-.bottom-download {
-    padding: 15px 20px;
-    background: #1e1e24; 
-    border-radius: 6px;
-    border-left: 4px solid var(--accent-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-.bottom-download p { margin: 0; font-weight: bold; font-size: 14px; }
-
-/* --- FOLIO DESCARGAS Y SOPORTE --- */
-.actions-container {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-}
-
-.action-card {
-    flex: 1;
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-}
-
-.gift-note {
-    font-size: 13px !important;
-    color: #ffb86c !important; 
-    background: #16161c;
-    padding: 10px;
-    border-radius: 6px;
-    border-left: 3px solid #ffb86c;
-    margin-bottom: 15px !important;
-}
-
-.paypal-email-backup {
-    display: block;
-    font-size: 11px;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 12px;
-    font-family: monospace;
-}
-
-.paypal-email-backup code {
-    background: #111116;
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: #e0e0e6;
-}
-
-/* --- CANVAS DEL CIRCUITO INTERACTIVO (PC) --- */
-.simulator-canvas {
-    position: relative; 
-    width: 100%;
-    height: 480px; 
-    background-color: #ffffff; 
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-}
-
-#Schematics {
-    position: absolute;
-    top: 22%;
-    left: 2%;
-    width: 52%;
-    height: auto;
-    z-index: 1;
-}
-
-#Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; }
-
-/* ==========================================================================
-   PARTE 3: MARCO INTEGRADO Y VENTANA EMERGENTE (MODAL)
-   ========================================================================== */
-.pro-card-container {
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 40px; 
-}
-
-.pro-card-container h3 {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 10px 0;
-    border-bottom: 1px solid #2d2d35;
-    padding-bottom: 6px;
-}
-
-.pro-card-box {
-    width: 100%;
-    background: #111116; 
-    border-radius: 8px;
-    border: 1px solid #2d2d35;
-    padding: 15px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-}
-
-.pro-card-link {
-    display: block;
-    width: 100%;
-    cursor: pointer;
-}
-
-.pro-card-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease;
-}
-
-.pro-card-img:hover {
-    transform: scale(1.01);
-}
-
-/* --- ESTILOS DE LA VENTANA EMERGENTE --- */
-.pro-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85); 
-    z-index: 9999; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.pro-modal:target {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.pro-modal-close-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: zoom-out;
-}
-
-.pro-modal-content {
-    position: relative;
-    max-width: 85%;
-    max-height: 85%;
-    background: var(--card-bg);
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.pro-modal-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
-    border-radius: 4px;
-}
-
-.pro-modal-close-btn {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    color: white;
-    font-size: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.pro-modal-close-btn:hover {
-    color: var(--accent-color);
 }
