@@ -15,37 +15,38 @@ function switchTab(event, tabId) {
 
 // --- FUNCIÓN 2: AUMENTAR CORRIENTE LDR (+) ---
 function Increase_Light() {
+    // Si ya estamos en el máximo (30mA) y se pulsa otra vez, salta el error de ImgBurn y reinicia
+    if (counter === 3) {
+        alert("Ooohhh nooo! Switch it off... It is burning!");
+        resetCircuit();
+        return;
+    }
+
+    // Incrementamos el estado del contador de forma segura
     counter += 1;
     
-    // EASTER EGG IMGBURN: Si excede los 30mA, el LDR explota con el mítico error
-    if (counter > 3) {
-        alert("Ooohhh nooo! 💥 Switch it off... It is burning!");
-        resetCircuit();
-        return; 
-    }
+    // Renderizado lineal de la corriente en la etiqueta
+    document.getElementById("Current_Label").innerHTML = "LDR Current " + (10 * counter) + " mA";
 
-    document.getElementById("Current_Label").innerHTML = 10 * counter + " mA";
+    // Activación del núcleo testigo azul del motor
+    document.getElementById("Engine_ON").style.visibility = "visible";
 
-    if (counter > 0 && counter <= 3) {
-        document.getElementById("Engine_ON").style.visibility = "visible";
-    }
-
-    // 10mA: Flechas inferiores 5 y 6 encendidas. Ventilador lento.
-    if (counter == 1) {
+    // NIVEL 1: 10mA -> 60 RPM (Animación a 1500ms)
+    if (counter === 1) {
         document.getElementById("Light_5").style.visibility = "visible";
         document.getElementById("Light_6").style.visibility = "visible";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1500ms infinite linear";
     }
 
-    // 20mA: Se suman las flechas del medio 3 y 4. Velocidad media.
-    if (counter == 2) {
+    // NIVEL 2: 20mA -> 120 RPM (Animación a 1000ms)
+    if (counter === 2) {
         document.getElementById("Light_3").style.visibility = "visible";
         document.getElementById("Light_4").style.visibility = "visible";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1000ms infinite linear";          
     }
 
-    // 30mA: Se suman las flechas superiores 1 y 2 (Todas encendidas). Ventilador al máximo.
-    if (counter == 3) {
+    // NIVEL 3: 30mA -> 180 RPM (Animación a 500ms)
+    if (counter === 3) {
         document.getElementById("Light_1").style.visibility = "visible";
         document.getElementById("Light_2").style.visibility = "visible";
         document.getElementById("CAD_Fan").style.animation = "Rotating 500ms infinite linear";           
@@ -54,41 +55,46 @@ function Increase_Light() {
 
 // --- FUNCIÓN 3: DISMINUIR CORRIENTE LDR (-) ---
 function Decrease_Light() {
-    counter -= 1;
-
-    // Alerta si intentan arrancar el motor a oscuras
-    if (counter < 0) {
+    // Si ya estamos en 0mA y se intenta restar, salta la alerta de falta de luz
+    if (counter === 0) {
         alert("Ohh no... The motor does not work without a minimum of light!");
         resetCircuit();
-        return; 
+        return;
     }
 
-    document.getElementById("Current_Label").innerHTML = 10 * counter + " mA";
+    // Decrementamos el estado del contador de forma segura
+    counter -= 1;
+    
+    // Renderizado lineal de la corriente en la etiqueta
+    document.getElementById("Current_Label").innerHTML = "LDR Current " + (10 * counter) + " mA";
 
-    // Baja a 20mA: Se oculta el nivel superior (1 y 2) y el ventilador decelera
-    if (counter == 2) {
+    // Al bajar a 20mA: Se apaga el nivel de luz superior (1 y 2) y baja a 120 RPM
+    if (counter === 2) {
         document.getElementById("Light_1").style.visibility = "hidden";
         document.getElementById("Light_2").style.visibility = "hidden";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1000ms infinite linear";                
     }
 
-    // Baja a 10mA: Se oculta el nivel medio (3 y 4) y el ventilador va lento
-    if (counter == 1) {
+    // Al bajar a 10mA: Se apaga el nivel de luz medio (3 y 4) y baja a 60 RPM
+    if (counter === 1) {
         document.getElementById("Light_3").style.visibility = "hidden";
         document.getElementById("Light_4").style.visibility = "hidden";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1500ms infinite linear";
     }
 
-    // Baja a 0mA: Reseteo limpio de todo el circuito
-    if (counter == 0) {
-        resetCircuit();
+    // Al bajar a 0mA: El motor y las últimas luces se detienen por completo
+    if (counter === 0) {
+        document.getElementById("Light_5").style.visibility = "hidden";
+        document.getElementById("Light_6").style.visibility = "hidden";
+        document.getElementById("Engine_ON").style.visibility = "hidden";
+        document.getElementById("CAD_Fan").style.animation = "none";
     }
 }
 
-// --- FUNCIÓN AUXILIAR: RESETEO DEL CIRCUITO ---
+// --- FUNCIÓN AUXILIAR: RESETEO COMPLETO DEL CIRCUITO ---
 function resetCircuit() {
     counter = 0;
-    document.getElementById("Current_Label").innerHTML = "0 mA";
+    document.getElementById("Current_Label").innerHTML = "LDR Current 0mA";
     
     document.getElementById("Light_1").style.visibility = "hidden";
     document.getElementById("Light_2").style.visibility = "hidden";
