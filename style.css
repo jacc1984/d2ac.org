@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PARTE 1: CONFIGURACIÓN GENERAL Y ESTRUCTURA DE ESCRITORIO (PC)
+   ========================================================================== */
+
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -156,6 +160,10 @@ h2 {
     gap: 20px;
 }
 
+/* ==========================================================================
+   PARTE 2: TARJETAS, MULTIMEDIA, CIRCUITO Y DIRECTIVA MÓVIL DEFINITIVA
+   ========================================================================== */
+
 /* --- TARJETAS (CARDS) --- */
 .intro-card {
     background: var(--card-bg);
@@ -199,7 +207,7 @@ h2 {
     color: var(--text-muted);
 }
 
-/* --- MULTIMEDIA COMPACTO (FORMATO NATIVO <div>) --- */
+/* --- MULTIMEDIA COMPACTO (<div>) --- */
 .media-box h3, .simulator-box h3, .media-box-parallel h3 {
     font-size: 11px;
     color: var(--text-muted);
@@ -210,7 +218,7 @@ h2 {
 
 .screenshot-container, .video-container {
     width: 100%;
-    max-width: 440px; /* Tamaño compacto y elegante para PC */
+    max-width: 440px;
     margin: 0 auto;
     background: #111116;
     border-radius: 8px;
@@ -234,7 +242,7 @@ h2 {
 .screenshot, .promo-video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Guarda la proporción nativa permitiendo zoom del navegador */
+    object-fit: contain;
     display: block;
 }
 
@@ -349,11 +357,13 @@ h2 {
     color: #e0e0e6;
 }
 
-/* --- CANVAS DEL CIRCUITO INTERACTIVO (PC) --- */
+/* ==========================================================================
+   PARTE 3: ENTORNO SEGURO Y POSICIONAMIENTO DEL SIMULADOR INTERACTIVO
+   ========================================================================== */
 .simulator-canvas {
     position: relative; 
     width: 100%;
-    height: 480px; 
+    height: 480px; /* Evita que el contenedor colapse y aplaste los elementos */
     background-color: #ffffff; 
     border-radius: 8px;
     border: 1px solid #3d3d45;
@@ -372,12 +382,91 @@ h2 {
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; }
+#Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
+#Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
+#Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
+
+/* PANEL DE CONTROL SUPERIOR (Alineación horizontal fija para los botones) */
+.control-panel-top {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+    background: rgba(37, 37, 43, 0.95);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #3d3d45;
+}
+
+#Current_Label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: monospace;
+    white-space: nowrap;
+}
+
+.circuit-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+}
+
+.circuit-btn.dec {
+    background-color: #dc3545;
+    border-bottom: 2px solid #bd2130;
+}
+.circuit-btn.dec:hover { background-color: #c82333; }
+
+.circuit-btn.inc {
+    background-color: #007acc;
+    border-bottom: 2px solid #005999;
+}
+.circuit-btn.inc:hover { background-color: #0062a3; }
+
+/* Elementos activos superpuestos en el circuito */
+#Engine_ON {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32%;
+    height: auto;
+    z-index: 3;
+    visibility: hidden;
+}
+
+#CAD_Fan {
+    position: absolute;
+    top: 25%;
+    right: 5%;
+    width: 25%;
+    height: auto;
+    z-index: 4;
+    transform-origin: center center; /* Evita que el ventilador se descentre al girar */
+}
+
+/* MOTOR DE ANIMACIÓN: Definición exacta del giro proporcional para JavaScript */
+@keyframes Rotating {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
 /* --- DIRECTIVA RESPONSIVE ADAPTATIVA PARA MÓVILES (ANDROID) --- */
 @media (max-width: 768px) {
     body {
-        overflow: auto; /* Habilita el scroll vertical nativo en Android */
+        overflow: auto;
         height: auto;
     }
     .app-container {
@@ -399,11 +488,14 @@ h2 {
         gap: 20px;
     }
     .screenshot-container, .video-container, .video-container-parallel {
-        max-width: 100%; /* Aprovecha todo el ancho disponible en la pantalla del móvil */
+        max-width: 100%;
     }
     .simulator-canvas {
-        height: 320px; /* Compacta el simulador para que quepa en smartphone */
+        height: 360px; /* Ajusta la caja del circuito para que no rompa la pantalla del móvil */
+    }
+    .control-panel-top {
+        width: 90%;
+        justify-content: space-between;
+        box-sizing: border-box;
     }
 }
-
-
