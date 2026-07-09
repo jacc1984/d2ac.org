@@ -133,7 +133,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* --- REJILLAS Ycolumnas --- */
+/* --- REJILLAS Y COLUMNAS --- */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -382,223 +382,46 @@ h2 {
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-#Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
-
-#CAD_Fan {
-    position: absolute;
-    top: 20%;
-    left: 60%;
-    width: 40%;
-    height: auto;
-    transform-origin: center center;
-    background-color: #ffffff; 
-    z-index: 1;
-}
-
-#Engine_ON {
-    position: absolute;
-    top: 47%;        
-    left: 45%;     
-    width: 7.5%;     
-    height: auto;
-    visibility: hidden;
-    z-index: 2; 
-}
-
-.control-panel-top {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    z-index: 4;
-}
-
-#Current_Label {
-    font-family: monospace;
-    font-size: 15px;
-    color: #0f766e; 
-    font-weight: bold;
-    margin: 0;
-    margin-left: auto;
-}
-
-.circuit-btn {
-    width: 110px;
-    height: 36px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    color: white;
-    transition: all 0.05s ease;
-}
-
-#Button_Decrease { background-color: #6e7681; border-bottom: 4px solid #484f58; }
-#Button_Decrease:active { border-bottom-width: 0px; transform: translateY(4px); }
-
-#Button_Increase { background-color: #007acc; border-bottom: 4px solid #005994; }
-#Button_Increase:active { border-bottom-width: 0px; transform: translateY(4px); }
-
-@keyframes Rotating {
-    100% { transform: rotate(360deg); }
-}
+#Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; }
 
 /* ==========================================================================
-   MÓVIL TOTALMENTE FLUIDO (Ajustes finales milimétricos para Android)
+   PARTE 3: CONTENEDOR DE NUEVA TARJETA DESDE GITHUB (NUEVO)
    ========================================================================== */
-@media screen and (max-width: 768px) {
-    
-    body {
-        height: auto !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-    }
-
-    .app-container {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        max-width: 100vw !important;
-        height: auto !important;
-        padding: 0;
-        margin: 0;
-    }
-
-    .sidebar {
-        width: 100% !important;
-        height: auto !important;
-        padding: 20px 15px !important;
-        border-right: none !important;
-        border-bottom: 1px solid #2d2d35 !important;
-    }
-
-    .menu {
-        display: flex !important;
-        flex-direction: row !important; 
-        flex-wrap: wrap !important; 
-        gap: 8px !important;
-        width: 100%;
-    }
-
-    .menu-btn {
-        flex: 1 1 calc(50% - 8px) !important; 
-        text-align: center;
-        padding: 10px !important;
-    }
-
-    .content {
-        width: 100% !important;
-        box-sizing: border-box;
-        padding: 20px 15px !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .grid-layout, 
-    .grid-layout.match-height {
-        display: flex !important;
-        flex-direction: column !important; 
-        gap: 30px !important; 
-        width: 100% !important;
-    }
-
-    .grid-layout.match-height > div {
-        flex: none !important;
-        width: 100% !important;
-    }
-
-    .info-column, 
-    .media-column,
-    .simulator-box,
-    .media-box-parallel {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    .screenshot-container {
-        aspect-ratio: auto !important;
-        height: auto !important;
-    }
-
-    .screenshot-container img.screenshot {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        display: block;
-        margin: 15px auto 0 auto; 
-        border-radius: 6px;
-        transform: scale(1.02); 
-    }
-
-    /* REAJUSTE MILIMÉTRICO DE ALTURA PARA EVITAR CORTES VISUALES */
-    .simulator-canvas {
-        position: relative !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 420px !important; /* Espacio vertical ampliado contra recortes */
-        overflow: hidden !important; 
-        background-color: #ffffff !important;
-    }
-
-    .simulator-canvas img#Schematics {
-        width: 55% !important; 
-        height: auto !important;
-        top: 28% !important; /* Separación de seguridad bajo los botones */
-        left: 2% !important;
-    }
-
-    .simulator-canvas img#CAD_Fan {
-        top: 26% !important;
-        left: 58% !important;
-        width: 40% !important;
-        height: auto !important;
-    }
-
-    .control-panel-top {
-        top: 12px !important;
-        left: 12px !important;
-        right: 12px !important;
-        gap: 8px !important;
-    }
-
-    .circuit-btn {
-        width: 95px !important;
-        height: 34px !important;
-        font-size: 10px !important;
-    }
-
-   .pro-card-container {
+.pro-card-container {
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.pro-card-container h2 {
-    font-family: inherit;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+.pro-card-container h3 {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #2d2d35;
+    padding-bottom: 6px;
+}
+
+.pro-card-box {
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid #3d3d45;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .pro-card-img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-
-
