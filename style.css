@@ -384,6 +384,10 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
+/* ==========================================================================
+   COMPONENTES DEL CIRCUITO (Mantenidos intactos para PC)
+   ========================================================================== */
+
 /* Ventilador CAD desplazado a la derecha */
 #CAD_Fan {
     position: absolute;
@@ -465,17 +469,24 @@ h2 {
 }
 
 /* ==========================================================================
-   MÓVIL TOTALMENTE FLUIDO (Equivalente a: If android -> Elements.fit.width)
+   MÓVIL TOTALMENTE FLUIDO (ÚNICA DIRECTIVA MEDIA QUERY ADAPTADA)
    ========================================================================== */
 @media screen and (max-width: 768px) {
     
+    /* Liberamos el cuerpo de la web para permitir scroll natural en Android */
+    body {
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
     /* 1. Forzar una única columna vertical en toda la página */
     .app-container {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
         max-width: 100vw !important;
-        overflow-x: hidden; /* Evita cualquier desplazamiento lateral molesto */
+        height: auto !important;
         padding: 0;
         margin: 0;
     }
@@ -485,36 +496,45 @@ h2 {
         width: 100% !important;
         height: auto !important;
         box-sizing: border-box;
-        padding: 20px 15px;
+        padding: 20px 15px !important;
+        border-right: none !important;
+        border-bottom: 1px solid #2d2d35 !important;
     }
 
     .menu {
         display: flex !important;
-        flex-direction: row !important; /* Botones uno al lado del otro en horizontal */
-        flex-wrap: wrap; /* Si no caben, bajan de renglón limpiamente */
-        gap: 8px;
+        flex-direction: row !important; 
+        flex-wrap: wrap !important; 
+        gap: 8px !important;
         width: 100%;
     }
 
     .menu-btn {
-        flex: 1 1 calc(50% - 8px); /* Distribuye los botones en pares equilibrados */
+        flex: 1 1 calc(50% - 8px) !important; 
         text-align: center;
-        padding: 10px;
+        padding: 10px !important;
     }
 
     /* 3. Área de contenido principal fluida */
     .content {
         width: 100% !important;
         box-sizing: border-box;
-        padding: 15px !important;
+        padding: 20px 15px !important;
+        height: auto !important;
+        overflow: visible !important;
     }
 
     /* 4. Romper las rejillas paralelas y apilarlas en una columna vertical */
     .grid-layout, 
     .grid-layout.match-height {
         display: flex !important;
-        flex-direction: column !important; /* Desactiva las columnas de PC */
-        gap: 25px !important; /* Da un respiro visual entre elementos */
+        flex-direction: column !important; 
+        gap: 30px !important; 
+        width: 100% !important;
+    }
+
+    .grid-layout.match-height > div {
+        flex: none !important;
         width: 100% !important;
     }
 
@@ -528,48 +548,82 @@ h2 {
         box-sizing: border-box;
     }
 
-    /* Hacer la captura/panel más grande bajo el texto */
+    /* Forzar que el contenedor de la imagen en Folio 1 rompa rigideces */
+    .screenshot-container {
+        aspect-ratio: auto !important;
+        height: auto !important;
+    }
+
+    /* Hacer la captura del panel de control un poco más grande en Android */
     .screenshot-container img.screenshot {
         width: 100% !important;
         height: auto !important;
         max-width: 100% !important;
         display: block;
-        margin: 10px auto 0 auto; /* Centrado y con margen superior */
+        margin: 15px auto 0 auto; 
         border-radius: 6px;
+        transform: scale(1.02); /* Ampliación sutil controlada sin romper márgenes */
     }
 
-    /* 6. Evitar el colapso y solapamiento del circuito interactivo y del vídeo de OneDrive */
+    /* 6. CORRECCIÓN CLAVE: Fijamos altura mínima al lienzo simulador para evitar solapamientos */
     .simulator-canvas {
         position: relative !important;
         width: 100% !important;
         max-width: 100% !important;
-        height: auto !important;
-        overflow: hidden; /* Mantiene fijas las coordenadas absolutas de tus componentes */
+        height: 340px !important; /* Mantiene un espacio físico real para contener los elementos absolutos */
+        overflow: hidden !important; 
     }
 
     .simulator-canvas img#Schematics {
-        width: 100% !important;
+        width: 55% !important; /* Protegemos la proporción del circuito de fondo */
         height: auto !important;
-        display: block;
+        top: 25% !important;
+        left: 2% !important;
     }
 
-    /* El vídeo de OneDrive ya no se solapará, se colocará ordenadamente debajo */
+    /* El panel superior del circuito táctil móvil se reajusta para que no se apelmone */
+    .control-panel-top {
+        top: 10px !important;
+        left: 10px !important;
+        right: 10px !important;
+        gap: 8px !important;
+    }
+
+    .circuit-btn {
+        width: 95px !important;
+        height: 34px !important;
+        font-size: 10px !important;
+    }
+
+    #Current_Label {
+        font-size: 13px !important;
+    }
+
+    /* El vídeo de OneDrive se coloca de forma totalmente independiente debajo */
     .video-container-parallel {
         width: 100% !important;
-        height: auto !important; /* Elimina el height: 100% que causaba el conflicto */
-        margin-top: 10px;
+        height: auto !important; 
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        margin-top: 5px !important;
+        overflow: visible !important;
     }
 
     .video-container-parallel .winworld-btn {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         width: 100% !important;
-        min-height: 70px !important; /* Formato estilizado y ergonómico para pulsar en pantallas táctiles */
-        box-sizing: border-box;
+        min-height: 80px !important; 
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        padding: 12px !important;
+    }
+
+    /* Ajuste de tarjetas inferiores del Folio 3 */
+    .actions-container {
+        flex-direction: column !important;
+        gap: 20px !important;
     }
 }
-
-
-/* Adaptación para móviles */
-@media (max-width: 768px) {
-    body { overflow: auto; height: auto; }
-    .app-container { flex-direction: column; height: auto; width: 100vw; }
-
