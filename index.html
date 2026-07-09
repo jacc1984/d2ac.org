@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=3.2">
 </head>
 <body>
 
     <div class="app-container">
+        <!-- Barra lateral izquierda -->
         <aside class="sidebar">
             <div class="brand-title">
                 <h1>Digital to Analog Converter</h1>
                 <span class="subtitle"><strong class="highlight-brand">TeraHertz</strong>&copy; Projects</span>
             </div>
-            
             <nav class="menu">
                 <button class="menu-btn active" onclick="switchTab(event, 'proyecto1')">LPT DB25 Port Control</button>
                 <button class="menu-btn" onclick="switchTab(event, 'circuito')">LDR Motor Control</button>
@@ -22,11 +22,12 @@
             </nav>
         </aside>
 
+        <!-- Contenido Central Dinámico -->
         <main class="content">
             
+            <!-- Folio 1: Proyecto Principal -->
             <section id="proyecto1" class="tab-content active">
                 <h2>Project Overview</h2>
-                
                 <div class="grid-layout">
                     <div class="info-column">
                         <div class="intro-card">
@@ -42,6 +43,14 @@
                             <p>Need Borland C++ 6.0 to compile?</p>
                             <a href="https://winworldpc.com" target="_blank" class="winworld-btn">Get IDE on WinWorld</a>
                         </div>
+
+                        <!-- NUEVA TARJETA INTEGRADA: Alineada perfectamente en tu columna izquierda -->
+                        <div class="media-box" style="margin-top: 15px;">
+                            <h3>PRO Acquisition Data Card</h3>
+                            <div class="screenshot-container">
+                                <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="screenshot">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="media-column">
@@ -51,7 +60,6 @@
                                 <img src="API screenshot.JPG" alt="Application Screenshot" class="screenshot">
                             </div>
                         </div>
-                        
                         <div class="media-box">
                             <h3>Demonstration Video</h3>
                             <div class="video-container">
@@ -63,83 +71,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="bottom-download">
+
+                <div class="bottom-download" style="margin-top: 25px;">
                     <p>Ready to explore the code?</p>
                     <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Source Code (.ZIP)</a>
                 </div>
-
-                <div class="pro-card-container">
-                    <h3>PRO Acquisition Data Card</h3>
-                    <div class="pro-card-box">
-                        <a href="#preview-modal" class="pro-card-link">
-                            <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="pro-card-img">
-                        </a>
-                    </div>
-                </div>
-
-                <div id="preview-modal" class="pro-modal">
-                    <a href="#proyecto1" class="pro-modal-close-overlay"></a>
-                    <div class="pro-modal-content">
-                        <a href="#proyecto1" class="pro-modal-close-btn">&times;</a>
-                        <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card Full">
-                    </div>
-                </div>
-
             </section>
 
+            <!-- Folio 2: Simulador de Circuito Interactivo -->
             <section id="circuito" class="tab-content">
                 <h2>LDR Motor Control</h2>
                 <p class="section-subtitle">Simulate real-time variables and visual responses within the schematic workspace or watch the live demo.</p>
-                
                 <div class="grid-layout match-height">
                     <div class="simulator-box">
                         <h3>Interactive Schematic</h3>
                         <div class="simulator-canvas">
                             <img id="Schematics" src="Schematics.png" alt="Circuit Schematics">
-                            <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR Light 1">
-                            <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR Light 2">
-                            <img id="Light_3" src="LDR_Arrow_Light.jpg" alt="LDR Light 3">
-                            <img id="Light_4" src="LDR_Arrow_Light.jpg" alt="LDR Light 4">
-                            <img id="Light_5" src="LDR_Arrow_Light.jpg" alt="LDR Light 5">
-                            <img id="Light_6" src="LDR_Arrow_Light.jpg" alt="LDR Light 6">
+                            <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR 1" style="position:absolute; top:23%; left:19%; width:4.5%; visibility:hidden;">
+                            <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR 2" style="position:absolute; top:23%; left:23%; width:4.5%; visibility:hidden;">
                             <img id="CAD_Fan" src="Sherry_CAD_Fan.png" alt="CAD Fan">
                             <img id="Engine_ON" src="Cropped_Engine(Blued).png" alt="Engine Status">
                             <div id="Engine_Center"></div>
                             <div class="control-panel-top">
-                                <button id="Button_Decrease" class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
-                                <button id="Button_Increase" class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
+                                <button class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
+                                <button class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
                                 <p id="Current_Label">LDR Current 0mA</p>
                             </div>
                             <p id="Clicks_Counter" style="visibility: hidden;">0</p>
                         </div>
                     </div>
-
                     <div class="media-box-parallel">
                         <h3>Hardware Demo Video</h3>
                         <div class="video-container-parallel" style="display: flex; flex-direction: column; justify-content: center; width: 100%;">
-                            <a href="https://1drv.ms" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="winworld-btn" 
-                               style="display: flex; justify-content: center; align-items: center; min-height: 80px; width: 100%; box-sizing: border-box; text-decoration: none; text-align: center; font-size: 1.1rem; padding: 15px; border-radius: 6px;">
-                               Watch Demo on OneDrive
+                            <a href="https://1drv.ms" target="_blank" rel="noopener noreferrer" class="winworld-btn" style="display: flex; justify-content: center; align-items: center; min-height: 80px; width: 100%; box-sizing: border-box; text-decoration: none; text-align: center; font-size: 1.1rem; padding: 15px; border-radius: 6px;">
+                                Watch Demo on OneDrive
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Folio 3: Descargas y Soporte -->
             <section id="descargas" class="tab-content">
                 <h2>Downloads & Support</h2>
                 <p class="section-subtitle">Get the complete source files or support the development of TeraHertz Projects.</p>
-                
                 <div class="actions-container">
                     <div class="action-card">
                         <h3>Source Code</h3>
                         <p>Download the full Borland C++ 6.0 project files.</p>
                         <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Fuentes (.ZIP)</a>
                     </div>
-                    
                     <div class="action-card">
                         <h3>Support the Project</h3>
                         <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
@@ -158,20 +139,12 @@
         function switchTab(event, tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
-            
             if (window.innerWidth <= 768) {
                 document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
-    
 </body>
 </html>
-
-
-
-
-                
