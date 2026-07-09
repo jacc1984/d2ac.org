@@ -1,7 +1,3 @@
-/* ==========================================================================
-   PARTE 1: CONFIGURACIÓN GENERAL Y ESTRUCTURA DE ESCRITORIO (PC)
-   ========================================================================== */
-
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -25,7 +21,7 @@ body {
     display: flex;
     height: 100vh;
     width: 100vw;
-} cleavage
+}
 
 /* --- BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
@@ -203,7 +199,7 @@ h2 {
     color: var(--text-muted);
 }
 
-/* --- MULTIMEDIA COMPACTO Y COMPATIBLE CON ANDROID --- */
+/* --- MULTIMEDIA COMPACTO (FORMATO NATIVO <div>) --- */
 .media-box h3, .simulator-box h3, .media-box-parallel h3 {
     font-size: 11px;
     color: var(--text-muted);
@@ -214,8 +210,8 @@ h2 {
 
 .screenshot-container, .video-container {
     width: 100%;
-    max-width: 480px; /* Evita que los marcos se hagan gigantes en PC */
-    margin: 0 auto;  /* Los mantiene perfectamente centrados en su columna */
+    max-width: 440px; /* Tamaño compacto y elegante para PC */
+    margin: 0 auto;
     background: #111116;
     border-radius: 8px;
     border: 1px solid #3d3d45;
@@ -225,7 +221,7 @@ h2 {
 
 .video-container-parallel {
     width: 100%;
-    max-width: 480px;
+    max-width: 440px;
     margin: 0 auto;
     height: auto;
     aspect-ratio: 16 / 9;
@@ -238,7 +234,7 @@ h2 {
 .screenshot, .promo-video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Guarda la relación de aspecto nativa sin deformar */
+    object-fit: contain; /* Guarda la proporción nativa permitiendo zoom del navegador */
     display: block;
 }
 
@@ -378,43 +374,10 @@ h2 {
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_4 { position: absolute; top: 28%; left: 23%; width: 4.5%; height: auto; }
 
-/* ==========================================================================
-   PARTE 3: MARCO EXCLUSIVO Y SEGURO PARA LA NUEVA CAPTURA DE PANTALLA
-   ========================================================================== */
-.pro-card-container {
-    margin-top: 25px;
-    width: 100%;
-    max-width: 480px; /* Se acopla de forma compacta al tamaño de la de arriba */
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-}
-
-.pro-screenshot-box {
-    width: 100%;
-    background: #111116; 
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-    aspect-ratio: 16 / 10; /* Relación de aspecto exacta para pantallas de 1280x800 */
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pro-screenshot {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
 /* --- DIRECTIVA RESPONSIVE ADAPTATIVA PARA MÓVILES (ANDROID) --- */
 @media (max-width: 768px) {
     body {
-        overflow: auto; /* Permite scroll general en pantallas verticales de móvil */
+        overflow: auto; /* Habilita el scroll vertical nativo en Android */
         height: auto;
     }
     .app-container {
@@ -435,11 +398,11 @@ h2 {
         flex-direction: column;
         gap: 20px;
     }
-    .screenshot-container, .video-container, .video-container-parallel, .pro-card-container {
-        max-width: 100%; /* Aprovecha todo el ancho de la pantalla del móvil */
+    .screenshot-container, .video-container, .video-container-parallel {
+        max-width: 100%; /* Aprovecha todo el ancho disponible en la pantalla del móvil */
     }
     .simulator-canvas {
-        height: 320px; /* Reduce el tamaño del lienzo interactivo en Android */
+        height: 320px; /* Compacta el simulador para que quepa en smartphone */
     }
 }
 
