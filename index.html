@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <!-- Cambiado a v=2.0 para obligar a Netlify a actualizar el diseño -->
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <!-- v=2.1: Fuerza a Netlify y al navegador a cargar los últimos efectos interactivos -->
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
@@ -68,7 +68,7 @@
                     </div>
                 </div>
 
-                <!-- CONTENEDOR INTEGRADO: Forzamos la descarga y la tarjeta juntas en un único bloque sólido -->
+                <!-- CONTENEDOR INTEGRADO CON ENLACE INTERACTIVO -->
                 <div class="bottom-download-wrapper">
                     <div class="bottom-download">
                         <p>Ready to explore the code?</p>
@@ -78,7 +78,10 @@
                     <div class="pro-card-container">
                         <h3>PRO Acquisition Data Card</h3>
                         <div class="pro-card-box">
-                            <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="pro-card-img">
+                            <!-- Al pulsar la imagen se abrirá a tamaño completo en una pestaña nueva -->
+                            <a href="https://githubusercontent.com" target="_blank" class="pro-card-link">
+                                <img src="https://githubusercontent.com" alt="PRO Acquisition Data Card" class="pro-card-img">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,10 +168,3 @@
             event.currentTarget.classList.add('active');
             
             if (window.innerWidth <= 768) {
-                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
-    
-</body>
-</html>
