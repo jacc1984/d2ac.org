@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <!-- Incrementamos a v=5.0 para obligar a Netlify a vaciar la caché de estilos -->
+    <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body>
 
@@ -43,14 +44,6 @@
                             <p>Need Borland C++ 6.0 to compile?</p>
                             <a href="https://winworldpc.com" target="_blank" class="winworld-btn">Get IDE on WinWorld</a>
                         </div>
-
-                        <!-- TARJETA INTEGRADA DEFINITIVA: Con ruta local directa -->
-                        <div class="media-box" style="margin-top: 15px;">
-                            <h3>PRO Acquisition Data Card</h3>
-                            <div class="screenshot-container">
-                                <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="screenshot">
-                            </div>
-                        </div>
                     </div>
 
                     <div class="media-column">
@@ -72,9 +65,18 @@
                     </div>
                 </div>
 
+                <!-- Botón de descarga original -->
                 <div class="bottom-download" style="margin-top: 25px;">
                     <p>Ready to explore the code?</p>
                     <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Source Code (.ZIP)</a>
+                </div>
+
+                <!-- UBICACIÓN SOLICITADA: Al final absoluto, centrada y adaptada debajo de la descarga -->
+                <div class="pro-card-container">
+                    <h3>PRO Acquisition Data Card</h3>
+                    <div class="pro-screenshot-box">
+                        <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="pro-screenshot">
+                    </div>
                 </div>
             </section>
 
@@ -134,7 +136,7 @@
         </main>
     </div>
 
-    <!-- Vinculación limpia de scripts externos -->
+    <!-- Vinculación de scripts -->
     <script src="scripts.js"></script>
 </body>
 </html>
