@@ -15,7 +15,7 @@ function switchTab(event, tabId) {
 
 // --- FUNCIÓN 2: AUMENTAR CORRIENTE LDR (+) ---
 function Increase_Light() {
-    // Si ya estamos en el máximo (30mA) y se pulsa otra vez, salta el error de ImgBurn y reinicia
+    // Si ya estamos en el máximo (30mA) y se pulsa otra vez (+), salta el error de ImgBurn y reinicia
     if (counter === 3) {
         alert("Ooohhh nooo! Switch it off... It is burning!");
         resetCircuit();
@@ -28,24 +28,24 @@ function Increase_Light() {
     // Renderizado lineal de la corriente en la etiqueta
     document.getElementById("Current_Label").innerHTML = "LDR Current " + (10 * counter) + " mA";
 
-    // Activación del núcleo testigo azul del motor
+    // Activación del núcleo testigo azul del motor en cualquier nivel con corriente
     document.getElementById("Engine_ON").style.visibility = "visible";
 
-    // NIVEL 1: 10mA -> 60 RPM (Animación a 1500ms)
+    // NIVEL 1: 10mA -> 2 Flechitas de luz (5 y 6) -> 60 RPM (Animación a 1500ms)
     if (counter === 1) {
         document.getElementById("Light_5").style.visibility = "visible";
         document.getElementById("Light_6").style.visibility = "visible";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1500ms infinite linear";
     }
 
-    // NIVEL 2: 20mA -> 120 RPM (Animación a 1000ms)
+    // NIVEL 2: 20mA -> 4 Flechitas de luz (3, 4, 5 y 6) -> 120 RPM (Animación a 1000ms)
     if (counter === 2) {
         document.getElementById("Light_3").style.visibility = "visible";
         document.getElementById("Light_4").style.visibility = "visible";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1000ms infinite linear";          
     }
 
-    // NIVEL 3: 30mA -> 180 RPM (Animación a 500ms)
+    // NIVEL 3: 30mA -> 6 Flechitas de luz (Todas visibles) -> 180 RPM (Animación a 500ms)
     if (counter === 3) {
         document.getElementById("Light_1").style.visibility = "visible";
         document.getElementById("Light_2").style.visibility = "visible";
@@ -68,33 +68,30 @@ function Decrease_Light() {
     // Renderizado lineal de la corriente en la etiqueta
     document.getElementById("Current_Label").innerHTML = "LDR Current " + (10 * counter) + " mA";
 
-    // Al bajar a 20mA: Se apaga el nivel de luz superior (1 y 2) y baja a 120 RPM
+    // Al bajar a 20mA: Se apaga el nivel superior (1 y 2), quedan 4 flechas y reduce a 120 RPM
     if (counter === 2) {
         document.getElementById("Light_1").style.visibility = "hidden";
         document.getElementById("Light_2").style.visibility = "hidden";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1000ms infinite linear";                
     }
 
-    // Al bajar a 10mA: Se apaga el nivel de luz medio (3 y 4) y baja a 60 RPM
+    // Al bajar a 10mA: Se apaga el nivel medio (3 y 4), quedan 2 flechas y reduce a 60 RPM
     if (counter === 1) {
         document.getElementById("Light_3").style.visibility = "hidden";
         document.getElementById("Light_4").style.visibility = "hidden";
         document.getElementById("CAD_Fan").style.animation = "Rotating 1500ms infinite linear";
     }
 
-    // Al bajar a 0mA: El motor y las últimas luces se detienen por completo
+    // Al bajar a 0mA: El motor, el ventilador y todas las luces se detienen por completo
     if (counter === 0) {
-        document.getElementById("Light_5").style.visibility = "hidden";
-        document.getElementById("Light_6").style.visibility = "hidden";
-        document.getElementById("Engine_ON").style.visibility = "hidden";
-        document.getElementById("CAD_Fan").style.animation = "none";
+        resetCircuit();
     }
 }
 
 // --- FUNCIÓN AUXILIAR: RESETEO COMPLETO DEL CIRCUITO ---
 function resetCircuit() {
     counter = 0;
-    document.getElementById("Current_Label").innerHTML = "LDR Current 0mA";
+    document.getElementById("Current_Label").innerHTML = "LDR Current 0 mA";
     
     document.getElementById("Light_1").style.visibility = "hidden";
     document.getElementById("Light_2").style.visibility = "hidden";
