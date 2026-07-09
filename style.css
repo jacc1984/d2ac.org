@@ -1,7 +1,3 @@
-/* ==========================================================================
-   PARTE 1: CONFIGURACIÓN GENERAL Y ESTRUCTURA DE ESCRITORIO (PC)
-   ========================================================================== */
-
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -18,7 +14,7 @@ body {
     color: var(--text-main);
     line-height: 1.4;
     height: 100vh;
-    overflow: hidden; /* Mantiene la ventana fija en PC */
+    overflow: hidden;
 }
 
 .app-container {
@@ -27,7 +23,7 @@ body {
     width: 100vw;
 }
 
-/* --- BARRA LATERAL (SIDEBAR) --- */
+/* Sidebar */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -99,7 +95,7 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
-/* --- PANEL DE CONTENIDO PRINCIPAL --- */
+/* Panel de Contenido */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -133,7 +129,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* --- REJILLAS Y COLUMNAS --- */
+/* Layout simétrico */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -159,11 +155,6 @@ h2 {
     flex-direction: column;
     gap: 20px;
 }
-
-/* ==========================================================================
-   PARTE 2: TARJETAS, MULTIMEDIA, CIRCUITO Y DIRECTIVA MÓVIL DEFINITIVA
-   ========================================================================== */
-
 /* --- TARJETAS (CARDS) --- */
 .intro-card {
     background: var(--card-bg);
@@ -358,7 +349,7 @@ h2 {
 }
 
 /* ==========================================================================
-   PARTE 3: CANVAS DEL CIRCUITO INTERACTIVO (PC)
+   PARTE 3: CANVAS DEL CIRCUITO INTERACTIVO (PERFECTO COORDENADAS %)
    ========================================================================== */
 .simulator-canvas {
     position: relative; 
@@ -379,6 +370,7 @@ h2 {
     z-index: 1;
 }
 
+/* Las 6 flechas de luz LDR */
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
@@ -386,7 +378,31 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
-/* PANEL DE CONTROL SUPERIOR (Espaciado amplio para evitar recortes del texto) */
+/* Ventilador CAD desplazado a la derecha con tus coordenadas nativas */
+#CAD_Fan {
+    position: absolute;
+    top: 20%;
+    left: 60%;
+    width: 40%;
+    height: auto;
+    transform-origin: center center;
+    background-color: #ffffff; 
+    z-index: 1;
+}
+
+/* El testigo central azul con tu reajuste milimétrico horizontal y vertical */
+#Engine_ON {
+    position: absolute;
+    top: 47%;        
+    left: 45%;     
+    width: 7.5%;     
+    height: auto;
+    visibility: hidden;
+    z-index: 2; 
+    transform: translate(-50%, -50%);
+}
+
+/* PANEL DE CONTROL SUPERIOR: Con ancho estable de 360px para que quepa "30 mA" */
 .control-panel-top {
     position: absolute;
     top: 15px;
@@ -395,7 +411,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 10;
+    z-index: 4;
     background: rgba(37, 37, 43, 0.95);
     padding: 8px 20px;
     border-radius: 6px;
@@ -409,70 +425,56 @@ h2 {
 }
 
 #Current_Label {
-    margin: 0;
-    font-size: 13px;
-    font-weight: bold;
-    color: #ffffff;
     font-family: monospace;
+    font-size: 14px;
+    color: #ffffff; 
+    font-weight: bold;
+    margin: 0;
     white-space: nowrap;
     padding-right: 10px;
 }
 
+/* Botones Switch Mecánicos Estilo Encendido/Apagado (Azul y Blanco) */
 .circuit-btn {
-    padding: 6px 14px;
+    width: 110px;
+    height: 36px;
+    border-radius: 4px;
     font-size: 11px;
     font-weight: bold;
     text-transform: uppercase;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.1s ease;
+    border: none;
+    transition: all 0.05s ease;
 }
 
-/* Botón (-) Apagado: Blanco y gris oscuro */
-.circuit-btn.dec {
+/* Botón (-) Apagado: Blanco puro con borde suave */
+#Button_Decrease {
     background-color: #ffffff;
     color: #1e1e24;
     border: 1px solid #cbd5e1;
-    border-bottom: 3px solid #cbd5e1;
+    border-bottom: 4px solid #cbd5e1;
 }
-.circuit-btn.dec:hover { background-color: #f8fafc; }
-.circuit-btn.dec:active { border-bottom-width: 1px; transform: translateY(2px); }
+#Button_Decrease:hover { background-color: #f8fafc; }
+#Button_Decrease:active {
+    border-bottom-width: 0px;
+    transform: translateY(4px);
+}
 
-/* Botón (+) Encendido: Azul y blanco */
-.circuit-btn.inc {
+/* Botón (+) Encendido: Azul brillante */
+#Button_Increase {
     background-color: #007acc;
-    color: #ffffff;
-    border-bottom: 3px solid #005999;
+    color: white;
+    border-bottom: 4px solid #005994;
 }
-.circuit-btn.inc:hover { background-color: #0062a3; }
-.circuit-btn.inc:active { border-bottom-width: 0px; transform: translateY(3px); }
-
-/* TESTIGO AZUL DEL MOTOR: Centrado horizontal definitivo (+81px a la derecha) */
-#Engine_ON {
-    position: absolute;
-    top: calc(55.5% - 30px);   
-    left: calc(28.2% + 81px); /* Modificado a +81px para que calce perfecto en el eje horizontal */
-    width: 7%;                 
-    height: auto;
-    z-index: 3;
-    visibility: hidden;
-    transform: translate(-50%, -50%);
+#Button_Increase:hover { background-color: #0062a3; }
+#Button_Increase:active {
+    border-bottom-width: 0px;
+    transform: translateY(4px);
 }
 
-#CAD_Fan {
-    position: absolute;
-    top: 25%;
-    right: 5%;
-    width: 25%;
-    height: auto;
-    z-index: 4;
-    transform-origin: center center;
-}
-
+/* Motor de rotación infinita por CSS */
 @keyframes Rotating {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* --- DIRECTIVA RESPONSIVE ADAPTATIVA PARA MÓVILES (ANDROID) --- */
