@@ -18,7 +18,7 @@ body {
     color: var(--text-main);
     line-height: 1.4;
     height: 100vh;
-    overflow: hidden; /* Mantiene la ventana fija en PC */
+    overflow: hidden;
 }
 
 .app-container {
@@ -27,7 +27,6 @@ body {
     width: 100vw;
 }
 
-/* --- BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -99,7 +98,6 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
-/* --- PANEL DE CONTENIDO PRINCIPAL --- */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -133,7 +131,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* --- REJILLAS Y COLUMNAS --- */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -159,7 +156,6 @@ h2 {
     flex-direction: column;
     gap: 20px;
 }
-
 /* ==========================================================================
    PARTE 2: TARJETAS, MULTIMEDIA, CIRCUITO Y DIRECTIVA MÓVIL DEFINITIVA
    ========================================================================== */
@@ -358,12 +354,12 @@ h2 {
 }
 
 /* ==========================================================================
-   PARTE 3: ENTORNO SEGURO Y POSICIONAMIENTO DEL SIMULADOR INTERACTIVO
+   PARTE 3: CANVAS DEL CIRCUITO INTERACTIVO (PC)
    ========================================================================== */
 .simulator-canvas {
     position: relative; 
     width: 100%;
-    height: 480px; /* Evita que el contenedor colapse y aplaste los elementos */
+    height: 480px; 
     background-color: #ffffff; 
     border-radius: 8px;
     border: 1px solid #3d3d45;
@@ -379,6 +375,7 @@ h2 {
     z-index: 1;
 }
 
+/* Posiciones de las 6 flechas de luz LDR superpuestas en el esquema */
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
@@ -386,7 +383,7 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
-/* PANEL DE CONTROL SUPERIOR (Alineación horizontal fija para los botones) */
+/* PANEL DE CONTROL SUPERIOR (Barra flotante centradita) */
 .control-panel-top {
     position: absolute;
     top: 15px;
@@ -411,42 +408,50 @@ h2 {
     white-space: nowrap;
 }
 
+/* FORMATO MEJORADO: Estilo Encendido/Apagado para los controles del LDR */
 .circuit-btn {
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-size: 11px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.1s ease;
+    transition: all 0.1s ease;
 }
 
+/* Botón (-) Apagado: Formato blanco puro con borde sutil */
 .circuit-btn.dec {
-    background-color: #dc3545;
-    border-bottom: 2px solid #bd2130;
+    background-color: #ffffff;
+    color: #1e1e24;
+    border: 1px solid #cbd5e1;
+    border-bottom: 3px solid #cbd5e1;
 }
-.circuit-btn.dec:hover { background-color: #c82333; }
+.circuit-btn.dec:hover { background-color: #f8fafc; }
+.circuit-btn.dec:active { border-bottom-width: 1px; transform: translateY(2px); }
 
+/* Botón (+) Encendido: Formato azul eléctrico con texto blanco */
 .circuit-btn.inc {
     background-color: #007acc;
-    border-bottom: 2px solid #005999;
+    color: #ffffff;
+    border-bottom: 3px solid #005999;
 }
 .circuit-btn.inc:hover { background-color: #0062a3; }
+.circuit-btn.inc:active { border-bottom-width: 0px; transform: translateY(3px); }
 
-/* Elementos activos superpuestos en el circuito */
+/* EL TESTIGO AZÚL DEL MOTOR: Reducido concéntricamente para calzar en el centro */
 #Engine_ON {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 32%;
+    top: 55.5%; /* Coordinada vertical exacta sobre el motor del esquema */
+    left: 28.2%; /* Coordenada horizontal exacta sobre el motor del esquema */
+    width: 7%;   /* Reducido al tamaño pequeño real del núcleo */
     height: auto;
     z-index: 3;
     visibility: hidden;
+    transform: translate(-50%, -50%);
 }
 
+/* Ventilador CAD lateral */
 #CAD_Fan {
     position: absolute;
     top: 25%;
@@ -454,10 +459,10 @@ h2 {
     width: 25%;
     height: auto;
     z-index: 4;
-    transform-origin: center center; /* Evita que el ventilador se descentre al girar */
+    transform-origin: center center;
 }
 
-/* MOTOR DE ANIMACIÓN: Definición exacta del giro proporcional para JavaScript */
+/* Definición de la animación de rotación infinita */
 @keyframes Rotating {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -491,10 +496,10 @@ h2 {
         max-width: 100%;
     }
     .simulator-canvas {
-        height: 360px; /* Ajusta la caja del circuito para que no rompa la pantalla del móvil */
+        height: 360px;
     }
     .control-panel-top {
-        width: 90%;
+        width: 95%;
         justify-content: space-between;
         box-sizing: border-box;
     }
