@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR Motor Control - TeraHertz© Projects</title>
-    <!-- Incrementamos a v=5.0 para obligar a Netlify a vaciar la caché de estilos -->
-    <link rel="stylesheet" href="style.css?v=5.0">
+    <!-- v=6.0: Fuerza a Netlify a refrescar la estructura multimedia compacta -->
+    <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
                 <h1>Digital to Analog Converter</h1>
                 <span class="subtitle"><strong class="highlight-brand">TeraHertz</strong>&copy; Projects</span>
             </div>
+            
             <nav class="menu">
                 <button class="menu-btn active" onclick="switchTab(event, 'proyecto1')">LPT DB25 Port Control</button>
                 <button class="menu-btn" onclick="switchTab(event, 'circuito')">LDR Motor Control</button>
@@ -29,6 +30,7 @@
             <!-- Folio 1: Proyecto Principal -->
             <section id="proyecto1" class="tab-content active">
                 <h2>Project Overview</h2>
+                
                 <div class="grid-layout">
                     <div class="info-column">
                         <div class="intro-card">
@@ -45,14 +47,16 @@
                             <a href="https://winworldpc.com" target="_blank" class="winworld-btn">Get IDE on WinWorld</a>
                         </div>
                     </div>
-
                     <div class="media-column">
+                        <!-- Contenedor div para la primera captura -->
                         <div class="media-box">
                             <h3>Screenshot (Control Panel)</h3>
                             <div class="screenshot-container">
                                 <img src="API screenshot.JPG" alt="Application Screenshot" class="screenshot">
                             </div>
                         </div>
+                        
+                        <!-- Contenedor div para la demostración en video -->
                         <div class="media-box">
                             <h3>Demonstration Video</h3>
                             <div class="video-container">
@@ -71,11 +75,11 @@
                     <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Source Code (.ZIP)</a>
                 </div>
 
-                <!-- UBICACIÓN SOLICITADA: Al final absoluto, centrada y adaptada debajo de la descarga -->
-                <div class="pro-card-container">
+                <!-- UBICACIÓN SOLICITADA: Estructurada con el mismo div compacto nativo -->
+                <div class="media-box" style="margin-top: 30px; width: 100%;">
                     <h3>PRO Acquisition Data Card</h3>
-                    <div class="pro-screenshot-box">
-                        <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="pro-screenshot">
+                    <div class="screenshot-container">
+                        <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="screenshot">
                     </div>
                 </div>
             </section>
@@ -84,6 +88,7 @@
             <section id="circuito" class="tab-content">
                 <h2>LDR Motor Control</h2>
                 <p class="section-subtitle">Simulate real-time variables and visual responses within the schematic workspace or watch the live demo.</p>
+                
                 <div class="grid-layout match-height">
                     <div class="simulator-box">
                         <h3>Interactive Schematic</h3>
@@ -102,6 +107,7 @@
                             <p id="Clicks_Counter" style="visibility: hidden;">0</p>
                         </div>
                     </div>
+
                     <div class="media-box-parallel">
                         <h3>Hardware Demo Video</h3>
                         <div class="video-container-parallel" style="display: flex; flex-direction: column; justify-content: center; width: 100%;">
@@ -117,12 +123,14 @@
             <section id="descargas" class="tab-content">
                 <h2>Downloads & Support</h2>
                 <p class="section-subtitle">Get the complete source files or support the development of TeraHertz Projects.</p>
+                
                 <div class="actions-container">
                     <div class="action-card">
                         <h3>Source Code</h3>
                         <p>Download the full Borland C++ 6.0 project files.</p>
                         <a href="Data Aqcuisition Card LPT.zip" class="download-btn" download>Download Fuentes (.ZIP)</a>
                     </div>
+                    
                     <div class="action-card">
                         <h3>Support the Project</h3>
                         <p>If you'd like to support TeraHertz Projects, you can send a contribution via PayPal.</p>
@@ -136,7 +144,7 @@
         </main>
     </div>
 
-    <!-- Vinculación de scripts -->
+    <!-- Vinculación limpia de scripts externos -->
     <script src="scripts.js"></script>
 </body>
 </html>
