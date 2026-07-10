@@ -1,6 +1,8 @@
 /* ==========================================================================
-   PARTE 1 DE 2: VARIABLES, GLOBALES, MENÚ LATERAL Y TARJETAS DE CONTENIDO
+   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 1 DE 2)
+   VARIABLES, ESTRUCTURA MAESTRA, MENÚ LATERAL Y TARJETAS DE CONTENIDO
    ========================================================================== */
+
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -26,7 +28,7 @@ body {
     width: 100vw;
 }
 
-/* Sidebar */
+/* Sidebar (Barra Lateral Izquierda) */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -98,7 +100,7 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
-/* Panel de Contenido */
+/* Panel de Contenido Principal */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -132,7 +134,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Layout simétrico */
+/* Layout de Rejilla / Columnas */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -159,7 +161,7 @@ h2 {
     gap: 20px;
 }
 
-/* Tarjetas */
+/* Tarjetas Informativas */
 .intro-card {
     background: var(--card-bg);
     padding: 20px;
@@ -202,7 +204,7 @@ h2 {
     color: var(--text-muted);
 }
 
-/* Botones Switch Mecánicos 3D Comunes */
+/* Botones Switch Mecánicos 3D */
 .download-btn, .winworld-btn {
     display: inline-block;
     padding: 11px 18px;
@@ -258,7 +260,76 @@ h2 {
 .bottom-download p { margin: 0; font-weight: bold; font-size: 14px; }
 
 /* ==========================================================================
-   PARTE 2 DE 2: MULTIMEDIA, CIRCUITO Y ANIMACIÓN TRIDIMENSIONAL ORBITAL
+   MEDIA QUERY: ADAPTACIÓN DE POSICIONAMIENTO PARA MÓVILES (PARTE 1)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    body, .app-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-y: auto !important; /* Activa el scroll vertical para Android */
+        overflow-x: hidden !important;
+        flex-direction: column !important; /* Coloca el menú arriba y el contenido abajo */
+    }
+
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+        border-right: none !important;
+        border-bottom: 1px solid #2d2d35;
+        padding: 15px !important;
+        gap: 12px !important;
+    }
+    
+    .menu {
+        flex-direction: row !important; /* Botones en fila horizontal superior */
+        flex-wrap: wrap !important;     /* Saltan de línea limpiamente si es necesario */
+        gap: 8px !important;
+    }
+
+    .menu-btn {
+        flex: 1 1 calc(33.33% - 8px); /* Botones distribuidos simétricamente */
+        text-align: center !important;
+        font-size: 12px !important;
+        padding: 10px 5px !important;
+    }
+
+    .content {
+        padding: 20px 15px !important;
+        overflow-y: visible !important; 
+    }
+
+    .tab-content.active {
+        display: flex !important;
+        flex-direction: column !important; /* Los folios activos se apilan verticalmente */
+        width: 100% !important;
+    }
+
+    .grid-layout, .grid-layout.match-height {
+        flex-direction: column !important; /* Convierte grids de PC en una sola columna */
+        gap: 20px !important;
+    }
+
+    .info-column, .media-column {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .ide-download-box, .bottom-download {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+
+    .download-btn, .winworld-btn {
+        width: 100% !important; /* Botones a tamaño completo táctil */
+        box-sizing: border-box !important;
+    }
+}
+
+/* ==========================================================================
+   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 2 DE 2)
+   MULTIMEDIA, CIRCUITO INTERACTIVO Y ANIMACIÓN TRIDIMENSIONAL ORBITAL
    ========================================================================== */
 
 /* Multimedia General */
@@ -480,7 +551,7 @@ h2 {
 }
 
 /* ==========================================================================
-   MÓDULO DEL CARRUSEL 3D CORREGIDO: GIRO LIMPICÍSIMO CON ESCALA INDIVIDUAL
+   MÓDULO DEL CARRUSEL 3D: GIRO EN PERSPECTIVA CON ESCALA INDIVIDUAL
    ========================================================================== */
 #descargas.tab-content {
     overflow: visible !important; 
@@ -518,18 +589,12 @@ h2 {
     animation-timing-function: linear !important;
 }
 
-/* Vinculamos a cada escudo su animación orbital independiente */
 #descargas .e1 { animation-name: orbitaEscudo1 !important; }
 #descargas .e2 { animation-name: orbitaEscudo2 !important; }
 #descargas .e3 { animation-name: orbitaEscudo3 !important; }
 
-/* 
-   CINEMÁTICA ORBITAL INDIVIDUAL CON RETOQUE DEL 5% EN EL ESCUDO 1 (UPV)
-*/
 @keyframes orbitaEscudo1 {
-    /* Frente: Subimos la escala de 1 a 1.05 (+5% de tamaño para la UPV) */
     0%   { transform: rotateY(0deg) translateZ(160px) translateX(0px) scale(1.05); z-index: 3; }
-    /* Fondo: Mantiene el escalado extra proporcional (0.63 en vez de 0.6) */
     33%  { transform: rotateY(120deg) translateZ(120px) translateX(60px) scale(0.63); z-index: 1; }
     66%  { transform: rotateY(240deg) translateZ(120px) translateX(-60px) scale(0.63); z-index: 1; }
     100% { transform: rotateY(360deg) translateZ(160px) translateX(0px) scale(1.05); z-index: 3; }
@@ -550,67 +615,120 @@ h2 {
 }
 
 /* ==========================================================================
-   FORMATO UNIFICADO EXCLUSIVO PARA MÓVILES (PANTALLAS PEQUEÑAS / ANDROID)
+   MEDIA QUERY: REPOSICIONAMIENTO MULTIMEDIA, CIRCUITO Y CARRUSEL (PARTE 2)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .video-container-parallel {
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+    }
+
+    .actions-container {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .action-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        flex: none !important;
+    }
+
+    .paypal-btn {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Reposicionamiento del Simulador de Circuito en Pantalla Táctil Android */
+    .simulator-canvas {
+        height: 380px !important; /* Estrecha el lienzo para evitar scrolls infinitos */
+        display: flex !important;
+        flex-direction: column !important;
+        background-color: #ffffff !important;
+    }
+
+    .control-panel-top {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 10px !important;
+        background: #f1f5f9 !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        justify-content: space-between !important;
+    }
+
+    #Current_Label {
+        margin-left: 0 !important;
+        font-size: 13px !important;
+    }
+
+    .circuit-btn {
+        flex: 1 !important;
+        max-width: 100px !important;
+    }
+
+    #Schematics {
+        top: 48% !important;   /* Centra la placa de circuito en la zona baja */
+        left: 5% !important;
+        width: 90% !important; /* Ajusta la escala proporcional */
+    }
+
+    #CAD_Fan {
+        top: 13% !important;   /* Reubica el motor/ventilador en la zona superior vacía */
+        left: 30% !important; 
+        width: 40% !important; 
+    }
+
+    #Engine_ON {
+        top: 30% !important;
+        left: 45% !important;
+        width: 10% !important;
+    }
+
+/* ==========================================================================
+   PARCHE DE ESTABILIZACIÓN MAESTRA: MISMO LAYOUT PARA FOLIOS 1, 2 Y 3
    ========================================================================== */
 @media screen and (max-width: 768px) {
   
-  /* 1. CONTENEDORES MULTIMEDIA (Imágenes y Videos) */
-  img, video {
-    display: block !important;
-    max-width: 100% !important;
-    height: auto !important;
-    margin: 15px auto !important; /* Centrado vertical y horizontal */
-    float: none !important;        /* Elimina desvíos laterales de PC */
-  }
-
-  /* 2. ESTRUCTURA MAESTRA (FLEX GLOBAL) */
-  body, .main-wrapper, #app-container {
-    display: flex !important;
-    flex-direction: column !important; /* Todo se apila de arriba a abajo */
+  /* Forzamos a que TODOS los folios se comporten exactamente igual en Chrome y Firefox */
+  .tab-content, 
+  #overview.tab-content, 
+  #motor.tab-content, 
+  #descargas.tab-content {
+    display: none; /* Por defecto ocultos */
     width: 100% !important;
-    overflow-x: hidden !important;     /* Evita el scroll horizontal molesto */
-  }
-
-  /* 3. BARRA LATERAL IZQUIERDA (Color #111116) */
-  /* Pasa de estar fija a la izquierda a convertirse en un menú superior */
-  .sidebar, aside, #left-menu {
-    position: relative !important; 
-    width: 100% !important;        
-    height: auto !important;       
-    left: 0 !important;
-    top: 0 !important;
-    margin: 0 !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    height: auto !important; /* Rompe el colapso a 0 píxeles */
+    overflow: visible !important; /* Evita que las tarjetas se recorten */
     box-sizing: border-box !important;
   }
 
-  /* 4. REPARACIÓN DE FOLIOS (Project Overview y LDR Motor Control) */
-  /* Eliminamos el margen izquierdo que en PC se usaba para esquivar la barra lateral */
-  .folio, main, section, .page-content {
+  /* Cuando una hoja se activa (sea la 1, la 2 o la 3), se abre de forma idéntica */
+  .tab-content.active,
+  #overview.tab-content.active,
+  #motor.tab-content.active,
+  #descargas.tab-content.active {
+    display: flex !important;
+    flex-direction: column !important; /* Columna limpia de arriba a abajo */
+    gap: 25px !important;
+  }
+
+  /* Corrección específica para Firefox: Evita que "Pro Acquisition Card" 
+     o cualquier caja de contenido técnico se desborde o se recorte lateralmente */
+  .intro-card, .action-card, .media-box, .simulator-box, .media-box-parallel {
     width: 100% !important;
     max-width: 100% !important;
-    margin-left: 0 !important;    /* ¡Adiós al hueco fantasma! */
-    padding: 15px !important;     /* Margen interno para que no pegue a los bordes táctiles */
-    float: none !important;
-    box-sizing: border-box !important;
-  }
-
-  /* 5. ALINEACIÓN INTERNA DE CONTENIDOS SECCIONALES */
-  .flex-container, .grid-container, .screenshot-section,
-  .project-overview-section, .ldr-control-panel, .schematic-container {
-    display: flex !important;
-    flex-direction: column !important; /* Fuerza contenido interno en columna */
-    width: 100% !important;
-    align-items: center !important;    /* Centra los elementos */
-    text-align: center !important;     
-  }
-
-  /* 6. ELEMENTOS TÉCNICOS ESPECÍFICOS (Esquema e interactivos) */
-  .interactive-schematic, .hardware-demo {
-    width: 100% !important;
+    min-width: 0 !important; /* ¡Truco clave para Firefox! Rompe el ancho mínimo intrínseco */
     height: auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important; /* Mantiene el contenido a raya dentro de sus bordes */
+  }
+
+  /* Aseguramos que los títulos y subtítulos técnicos no fuercen anchos fantasmas */
+  h2, .section-subtitle, h3 {
+    width: 100% !important;
+    white-space: normal !important; /* Permite que el texto largo salte de línea en móviles */
   }
 }
-
-
-
-
