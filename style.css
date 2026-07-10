@@ -415,8 +415,8 @@ h2 {
 
 #Engine_ON {
     position: absolute;
-    top: 47%;        
-    left: 45%;     
+    top: 45.5%;        
+    left: 44.86%;     
     width: 7.5%;     
     height: auto;
     visibility: hidden;
@@ -660,5 +660,6 @@ h2 {
         margin: 60px auto !important; 
         perspective: 1000px !important;
     }
-}
+
+    }
 
