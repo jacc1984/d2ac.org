@@ -549,36 +549,65 @@ h2 {
     100% { transform: rotateY(600deg) translateZ(120px) translateX(-60px) scale(0.6); z-index: 1; }
 }
 
-/* Vista Móvil */
-@media (max-width: 768px) {
-    body { 
-        overflow: auto; 
-        height: auto; 
-    }
-    .app-container { 
-        flex-direction: column; 
-        height: auto; 
-        width: 100vw; 
-    }
-}
-
-/* --- FORMATO EXCLUSIVO PARA MÓVILES Y PANTALLAS PEQUEÑAS --- */
+/* ==========================================================================
+   FORMATO UNIFICADO EXCLUSIVO PARA MÓVILES (PANTALLAS PEQUEÑAS / ANDROID)
+   ========================================================================== */
 @media screen and (max-width: 768px) {
   
-  /* Forzamos a que los contenedores de multimedia se alineen en columna */
+  /* 1. CONTENEDORES MULTIMEDIA (Imágenes y Videos) */
   img, video {
     display: block !important;
     max-width: 100% !important;
     height: auto !important;
-    margin: 15px auto !important; /* Los centra y les da espacio vertical */
-    float: none !important;        /* Rompe alineaciones a los lados estilo PC */
+    margin: 15px auto !important; /* Centrado vertical y horizontal */
+    float: none !important;        /* Elimina desvíos laterales de PC */
   }
 
-  /* Si usas contenedores flex para tus galerías o secciones, los apilamos */
-  .flex-container, .grid-container, .screenshot-section {
+  /* 2. ESTRUCTURA MAESTRA (FLEX GLOBAL) */
+  body, .main-wrapper, #app-container {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    flex-direction: column !important; /* Todo se apila de arriba a abajo */
+    width: 100% !important;
+    overflow-x: hidden !important;     /* Evita el scroll horizontal molesto */
+  }
+
+  /* 3. BARRA LATERAL IZQUIERDA (Color #111116) */
+  /* Pasa de estar fija a la izquierda a convertirse en un menú superior */
+  .sidebar, aside, #left-menu {
+    position: relative !important; 
+    width: 100% !important;        
+    height: auto !important;       
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 4. REPARACIÓN DE FOLIOS (Project Overview y LDR Motor Control) */
+  /* Eliminamos el margen izquierdo que en PC se usaba para esquivar la barra lateral */
+  .folio, main, section, .page-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;    /* ¡Adiós al hueco fantasma! */
+    padding: 15px !important;     /* Margen interno para que no pegue a los bordes táctiles */
+    float: none !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 5. ALINEACIÓN INTERNA DE CONTENIDOS SECCIONALES */
+  .flex-container, .grid-container, .screenshot-section,
+  .project-overview-section, .ldr-control-panel, .schematic-container {
+    display: flex !important;
+    flex-direction: column !important; /* Fuerza contenido interno en columna */
+    width: 100% !important;
+    align-items: center !important;    /* Centra los elementos */
+    text-align: center !important;     
+  }
+
+  /* 6. ELEMENTOS TÉCNICOS ESPECÍFICOS (Esquema e interactivos) */
+  .interactive-schematic, .hardware-demo {
+    width: 100% !important;
+    height: auto !important;
   }
 }
 
