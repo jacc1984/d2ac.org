@@ -1,3 +1,6 @@
+/* ==========================================================================
+   PARTE 1 DE 2: VARIABLES, GLOBALES, MENÚ LATERAL Y TARJETAS DE CONTENIDO
+   ========================================================================== */
 :root {
     --bg-dark: #1e1e24;       
     --bg-sidebar: #111116;    
@@ -155,7 +158,8 @@ h2 {
     flex-direction: column;
     gap: 20px;
 }
-/* --- TARJETAS (CARDS) --- */
+
+/* Tarjetas */
 .intro-card {
     background: var(--card-bg);
     padding: 20px;
@@ -198,47 +202,8 @@ h2 {
     color: var(--text-muted);
 }
 
-/* --- MULTIMEDIA COMPACTO (<div>) --- */
-.media-box h3, .simulator-box h3, .media-box-parallel h3 {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 8px 0;
-}
-
-.screenshot-container, .video-container {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    background: #111116;
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-    aspect-ratio: 16 / 9; 
-}
-
-.video-container-parallel {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid #3d3d45;
-    overflow: hidden;
-}
-
-.screenshot, .promo-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/* --- BOTONES MECÁNICOS 3D --- */
-.download-btn, .paypal-btn, .winworld-btn {
+/* Botones Switch Mecánicos 3D Comunes */
+.download-btn, .winworld-btn {
     display: inline-block;
     padding: 11px 18px;
     border-radius: 6px;
@@ -280,34 +245,65 @@ h2 {
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
 }
 
-.paypal-btn { 
-    background-color: #ffc107; 
-    color: #111; 
-    width: 100%;
-    border-bottom: 4px solid #d39e00; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-.paypal-btn:hover { background-color: #ffca2c; }
-.paypal-btn:active {
-    border-bottom-width: 0px;
-    transform: translateY(4px);
-    box-shadow: 0 0px 2px rgba(0,0,0,0.5);
-}
-
 .bottom-download {
+    margin-top: 25px;
     padding: 15px 20px;
-    background: var(--card-bg); 
-    border-radius: 6px;
+    background: var(--card-bg);
+    border-radius: 8px;
     border-left: 4px solid var(--accent-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 .bottom-download p { margin: 0; font-weight: bold; font-size: 14px; }
 
-/* --- FOLIO DESCARGAS Y SOPORTE --- */
+/* ==========================================================================
+   PARTE 2 DE 2: MULTIMEDIA, CIRCUITO Y EXCLUSIVOS DE LA TERCERA HOJA
+   ========================================================================== */
+
+/* Multimedia General */
+.media-box h3, .simulator-box h3, .media-box-parallel h3 {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+}
+
+.screenshot-container, .video-container {
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid #3d3d45;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; 
+}
+
+.video-container-parallel {
+    width: 100%;
+    height: 480px; 
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid #3d3d45;
+    overflow: hidden;
+}
+
+.screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    background-color: #111116; 
+}
+
+.promo-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #111116;
+}
+
+/* Folio Descargas: Contenedores base */
 .actions-container {
     display: flex;
     gap: 20px;
@@ -322,14 +318,46 @@ h2 {
     border: 1px solid #3d3d45;
 }
 
+/* Nota de PayPal: Fondo oscuro del menú lateral y borde azul */
 .gift-note {
     font-size: 13px !important;
-    color: #ffb86c !important; 
-    background: #16161c;
-    padding: 10px;
+    color: var(--text-main) !important; 
+    background: var(--bg-sidebar) !important;
+    padding: 15px !important;
     border-radius: 6px;
-    border-left: 3px solid #ffb86c;
-    margin-bottom: 15px !important;
+    border-left: 4px solid var(--accent-color) !important;
+    margin-bottom: 20px !important;
+}
+
+.gift-note strong {
+    color: var(--accent-color) !important;
+}
+
+/* Botón de PayPal: Azul unificado estilo mecánico 3D */
+.paypal-btn { 
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    background-color: var(--accent-color) !important; 
+    color: #ffffff !important; 
+    width: 100%;
+    border-bottom: 4px solid #005994 !important; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+    transition: background-color 0.1s ease !important;
+}
+.paypal-btn:hover { background-color: #008be6 !important; }
+.paypal-btn:active {
+    border-bottom-width: 0px !important;
+    transform: translateY(4px) !important;
+    box-shadow: 0 0px 2px rgba(0,0,0,0.5) !important;
 }
 
 .paypal-email-backup {
@@ -348,9 +376,7 @@ h2 {
     color: #e0e0e6;
 }
 
-/* ==========================================================================
-   PARTE 3: CANVAS DEL CIRCUITO INTERACTIVO (PERFECTO COORDENADAS %)
-   ========================================================================== */
+/* Canvas del Circuito Interactivo */
 .simulator-canvas {
     position: relative; 
     width: 100%;
@@ -370,7 +396,6 @@ h2 {
     z-index: 1;
 }
 
-/* Las 6 flechas de luz LDR */
 #Light_1 { position: absolute; top: 23%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_2 { position: absolute; top: 23%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_3 { position: absolute; top: 28%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
@@ -378,7 +403,6 @@ h2 {
 #Light_5 { position: absolute; top: 33%; left: 19%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 #Light_6 { position: absolute; top: 33%; left: 23%; width: 4.5%; height: auto; visibility: hidden; z-index: 2; }
 
-/* Ventilador CAD desplazado a la derecha con tus coordenadas nativas */
 #CAD_Fan {
     position: absolute;
     top: 20%;
@@ -390,7 +414,6 @@ h2 {
     z-index: 1;
 }
 
-/* El testigo central azul con tu reajuste milimétrico horizontal y vertical */
 #Engine_ON {
     position: absolute;
     top: 47%;        
@@ -399,42 +422,28 @@ h2 {
     height: auto;
     visibility: hidden;
     z-index: 2; 
-    transform: translate(-50%, -50%);
 }
 
-/* PANEL DE CONTROL SUPERIOR: Con ancho estable de 360px para que quepa "30 mA" */
 .control-panel-top {
     position: absolute;
     top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
     z-index: 4;
-    background: rgba(37, 37, 43, 0.95);
-    padding: 8px 20px;
-    border-radius: 6px;
-    border: 1px solid #3d3d45;
-    
-    width: 360px; 
-    min-width: 360px;
-    max-width: 360px;
-    justify-content: space-between;
-    box-sizing: border-box;
 }
 
 #Current_Label {
     font-family: monospace;
-    font-size: 14px;
-    color: #ffffff; 
+    font-size: 15px;
+    color: #0f766e; 
     font-weight: bold;
     margin: 0;
-    white-space: nowrap;
-    padding-right: 10px;
+    margin-left: auto;
 }
 
-/* Botones Switch Mecánicos Estilo Encendido/Apagado (Azul y Blanco) */
 .circuit-btn {
     width: 110px;
     height: 36px;
@@ -444,72 +453,98 @@ h2 {
     text-transform: uppercase;
     cursor: pointer;
     border: none;
+    color: white;
     transition: all 0.05s ease;
 }
 
-/* Botón (-) Apagado: Blanco puro con borde suave */
 #Button_Decrease {
-    background-color: #ffffff;
-    color: #1e1e24;
-    border: 1px solid #cbd5e1;
-    border-bottom: 4px solid #cbd5e1;
+    background-color: #6e7681;
+    border-bottom: 4px solid #484f58;
 }
-#Button_Decrease:hover { background-color: #f8fafc; }
 #Button_Decrease:active {
     border-bottom-width: 0px;
     transform: translateY(4px);
 }
 
-/* Botón (+) Encendido: Azul brillante */
 #Button_Increase {
     background-color: #007acc;
-    color: white;
     border-bottom: 4px solid #005994;
 }
-#Button_Increase:hover { background-color: #0062a3; }
 #Button_Increase:active {
     border-bottom-width: 0px;
     transform: translateY(4px);
 }
 
-/* Motor de rotación infinita por CSS */
 @keyframes Rotating {
     100% { transform: rotate(360deg); }
 }
 
-/* --- DIRECTIVA RESPONSIVE ADAPTATIVA PARA MÓVILES (ANDROID) --- */
-@media (max-width: 768px) {
-    body {
-        overflow: auto;
-        height: auto;
+/* Módulo del Carrusel 3D (Folio 3) */
+#descargas.tab-content {
+    overflow: visible !important; 
+}
+
+#descargas .contenedor-3d {
+    perspective: 1200px !important;
+    width: 100% !important;
+    height: 300px !important; 
+    margin: 40px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+#descargas .carrusel-escudos {
+    position: relative !important;
+    width: 160px !important;
+    height: 160px !important;
+    transform-style: preserve-3d !important;
+    transform-origin: center center !important;
+    animation: giroContinuoOSX 12s infinite linear; 
+}
+
+#descargas .escudo {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: contain !important;
+    backface-visibility: visible !important;
+}
+
+#descargas .e1 { transform: rotateY(0deg) translateZ(150px) !important; }
+#descargas .e2 { transform: rotateY(120deg) translateZ(150px) !important; }
+#descargas .e3 { transform: rotateY(240deg) translateZ(150px) !important; }
+
+/* Animación Cinemática OS X */
+@keyframes giroContinuoOSX {
+    0% {
+        transform: rotateY(0deg) translateX(0px) scale(1);
     }
-    .app-container {
-        flex-direction: column;
-        height: auto;
-        width: 100vw;
+    33.33% {
+        transform: rotateY(-120deg) translateX(50px) scale(0.85);
     }
-    .sidebar {
-        width: 100%;
-        box-sizing: border-box;
-        border-right: none;
-        border-bottom: 1px solid #2d2d35;
+    66.66% {
+        transform: rotateY(-240deg) translateX(100px) scale(0.75);
     }
-    .content {
-        padding: 20px;
-    }
-    .grid-layout {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .screenshot-container, .video-container, .video-container-parallel {
-        max-width: 100%;
-    }
-    .simulator-canvas {
-        height: 360px;
-    }
-    .control-panel-top {
-        width: 95%;
-        justify-content: space-between;
-        box-sizing: border-box;
+    100% {
+        transform: rotateY(-360deg) translateX(0px) scale(1);
     }
 }
+
+/* Vista Móvil */
+@media (max-width: 768px) {
+    body { 
+        overflow: auto; 
+        height: auto; 
+    }
+    .app-container { 
+        flex-direction: column; 
+        height: auto; 
+        width: 100vw; 
+    }
+}
+
