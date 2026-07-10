@@ -562,4 +562,26 @@ h2 {
     }
 }
 
+/* --- FORMATO EXCLUSIVO PARA MÓVILES Y PANTALLAS PEQUEÑAS --- */
+@media screen and (max-width: 768px) {
+  
+  /* Forzamos a que los contenedores de multimedia se alineen en columna */
+  img, video {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 15px auto !important; /* Los centra y les da espacio vertical */
+    float: none !important;        /* Rompe alineaciones a los lados estilo PC */
+  }
+
+  /* Si usas contenedores flex para tus galerías o secciones, los apilamos */
+  .flex-container, .grid-container, .screenshot-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+
+
+
 
