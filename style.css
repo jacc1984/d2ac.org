@@ -1,6 +1,6 @@
 /* ==========================================================================
-   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 1 DE 3)
-   CÓDIGO ORIGINAL INTACTO PARA ORDENADORES (PC) - VARIABLES Y MAQUETA BASE
+   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 1 DE 3 MAESTRA)
+   VARIABLES, ESTRUCTURA MAESTRA Y MENÚ DE NAVEGACIÓN (PC Y MÓVIL)
    ========================================================================== */
 
 :root {
@@ -28,7 +28,7 @@ body {
     width: 100vw;
 }
 
-/* Sidebar */
+/* Sidebar (Menu Lateral PC) */
 .sidebar {
     width: 280px;
     background-color: var(--bg-sidebar);
@@ -100,7 +100,7 @@ body {
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
 }
 
-/* Panel de Contenido */
+/* Panel de Contenido Principal (PC) */
 .content {
     flex: 1;
     padding: 30px 40px;
@@ -119,6 +119,50 @@ body {
     flex-direction: column;
 }
 
+/* ==========================================================================
+   DIRECTIVA ADAPTATIVA: INICIO ENTORNO MÓVIL (PANTALLAS ANDROID)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* Liberacion del viewport vertical para permitir scroll hacia abajo */
+    body, .app-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        flex-direction: column !important;
+    }
+
+    /* Transformacion de la barra lateral izquierda a menú de cabecera superior */
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+        border-right: none !important;
+        border-bottom: 1px solid #2d2d35;
+        padding: 15px !important;
+        gap: 12px !important;
+    }
+    
+    .menu {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .menu-btn {
+        flex: 1 1 calc(33.33% - 8px);
+        text-align: center !important;
+        font-size: 12px !important;
+        padding: 10px 5px !important;
+    }
+}
+
+/* ==========================================================================
+   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 2 DE 3 MAESTRA)
+   TARJETAS, BOTONES MECÁNICOS Y REJILLAS DE DISEÑO TÉCNICO (PC Y MÓVIL)
+   ========================================================================== */
+
 h2 {
     color: #ffffff;
     font-size: 22px;
@@ -134,7 +178,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Layout simétrico */
+/* Layout de Rejilla Simétrica (PC) */
 .grid-layout {
     display: flex;
     gap: 30px;
@@ -161,7 +205,7 @@ h2 {
     gap: 20px;
 }
 
-/* Tarjetas */
+/* Tarjetas Informativas */
 .intro-card {
     background: var(--card-bg);
     padding: 20px;
@@ -175,9 +219,7 @@ h2 {
     margin: 0 0 10px 0;
 }
 
-.intro-card p:last-child {
-    margin-bottom: 0;
-}
+.intro-card p:last-child { margin-bottom: 0; }
 
 .old-blog {
     background: #111116;
@@ -198,18 +240,9 @@ h2 {
     gap: 15px;
 }
 
-.ide-download-box p {
-    margin: 0;
-    font-size: 13px;
-    color: var(--text-muted);
-}
+.ide-download-box p { margin: 0; font-size: 13px; color: var(--text-muted); }
 
-/* ==========================================================================
-   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 2 DE 3)
-   CÓDIGO ORIGINAL INTACTO PARA ORDENADORES (PC) - MULTIMEDIA Y CARRUSEL 3D
-   ========================================================================== */
-
-/* Botones Switch Mecánicos 3D Comunes */
+/* Botones Switch Mecánicos 3D */
 .download-btn, .winworld-btn {
     display: inline-block;
     padding: 11px 18px;
@@ -264,7 +297,7 @@ h2 {
 }
 .bottom-download p { margin: 0; font-weight: bold; font-size: 14px; }
 
-/* Multimedia General */
+/* Elementos Multimedia */
 .media-box h3, .simulator-box h3, .media-box-parallel h3 {
     font-size: 11px;
     color: var(--text-muted);
@@ -291,7 +324,7 @@ h2 {
     overflow: hidden;
 }
 
-.screenshot {
+.screenshot, .promo-video {
     width: 100%;
     height: 100%;
     object-fit: contain; 
@@ -299,14 +332,6 @@ h2 {
     background-color: #111116; 
 }
 
-.promo-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: #111116;
-}
-
-/* Folio Descargas: Contenedores base */
 .actions-container {
     display: flex;
     gap: 20px;
@@ -321,7 +346,7 @@ h2 {
     border: 1px solid #3d3d45;
 }
 
-/* Nota de PayPal */
+/* Sección Integrada de PayPal */
 .gift-note {
     font-size: 13px !important;
     color: var(--text-main) !important; 
@@ -333,7 +358,6 @@ h2 {
 }
 .gift-note strong { color: var(--accent-color) !important; }
 
-/* Botón de PayPal */
 .paypal-btn { 
     display: inline-block;
     padding: 11px 18px;
@@ -375,7 +399,78 @@ h2 {
     color: #e0e0e6;
 }
 
-/* Canvas del Circuito Interactivo */
+/* ==========================================================================
+   DIRECTIVA ADAPTATIVA: ACOPLE DE REJILLAS Y TARJETAS EN MÓVIL (MÉTODO SUMA)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .content {
+        padding: 20px 15px !important;
+        overflow-y: visible !important; 
+    }
+
+    /* Estabilizador de las tres hojas principales para evitar colapsos visuales */
+    .tab-content, #overview.tab-content, #motor.tab-content, #descargas.tab-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    .tab-content.active, #overview.tab-content.active, #motor.tab-content.active, #descargas.tab-content.active {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 25px !important;
+    }
+
+    .grid-layout, .actions-container {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .info-column, .media-column, .action-card {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* Blindaje anti-recortes para Firefox y Chrome */
+    .intro-card, .action-card, .media-box, .simulator-box, .media-box-parallel {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important; 
+        height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .video-container-parallel {
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+    }
+
+    h2, .section-subtitle, h3 {
+        width: 100% !important;
+        white-space: normal !important;
+    }
+
+    .ide-download-box, .bottom-download {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+
+    .download-btn, .winworld-btn, .paypal-btn {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* ==========================================================================
+   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 3 DE 3 MAESTRA)
+   SIMULADOR LDR, CARRUSEL 3D ORBITAL Y PARCHE DE PRECISIÓN EN MÓVILES
+   ========================================================================== */
+
+/* Canvas del Circuito Interactivo (Estilo por defecto PC) */
 .simulator-canvas {
     position: relative; 
     width: 100%;
@@ -413,15 +508,18 @@ h2 {
     z-index: 1;
 }
 
-#Engine_ON {
-    position: absolute;
-    top: 45.7%;        
-    left: 44.86%;     
-    width: 7.5%;     
-    height: auto;
-    visibility: hidden;
-    z-index: 2; 
-}
+/* Ajustamos el eje móvil modificando directamente tu bloque de programación */
+    #Engine_ON {
+        position: absolute !important;
+        top: 45.2% !important; /* Reducimos sutilmente el porcentaje para corregir los 10-12px hacia arriba */
+        left: 45% !important;     
+        width: 7.5% !important;     
+        height: auto !important;
+        z-index: 2 !important; 
+        
+        /* LA LÍNEA CLAVE PARA ANDROID: Forzamos la misma proporción dimensional de PC */
+        aspect-ratio: 1 / 1 !important; 
+    }
 
 .control-panel-top {
     position: absolute;
@@ -464,7 +562,7 @@ h2 {
 
 @keyframes Rotating { 100% { transform: rotate(360deg); } }
 
-/* Módulo del Carrusel 3D Original */
+/* Módulo del Carrusel 3D Original Pure CSS (PC) */
 #descargas.tab-content { overflow: visible !important; }
 #descargas .contenedor-3d {
     perspective: 1200px !important; 
@@ -524,109 +622,11 @@ h2 {
 }
 
 /* ==========================================================================
-   TERAHERTZ PROJECTS - STYLE.CSS (PARTE 3 DE 3 DEFINITIVA)
-   MEDIA QUERY AISLADA: ENTORNO EXCLUSIVO PARA MÓVILES (ANDROID)
+   DIRECTIVA ADAPTATIVA: ENTORNO INTERNO EXCLUSIVO PARA MÓVILES (MÉTODO SUMA)
    ========================================================================== */
 @media screen and (max-width: 768px) {
-    
-    /* 1. LIBERACIÓN VERTICAL MAESTRA */
-    body, .app-container {
-        height: auto !important;
-        min-height: 100vh !important;
-        overflow-y: auto !important; /* Desbloquea el scroll en Android */
-        overflow-x: hidden !important;
-        flex-direction: column !important; /* Menú arriba, contenido abajo */
-    }
 
-    /* 2. TRANSFORMACIÓN DEL MENÚ LATERAL A SUPERIOR */
-    .sidebar {
-        width: 100% !important;
-        height: auto !important;
-        box-sizing: border-box !important;
-        border-right: none !important;
-        border-bottom: 1px solid #2d2d35;
-        padding: 15px !important;
-        gap: 12px !important;
-    }
-    
-    .menu {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-    }
-
-    .menu-btn {
-        flex: 1 1 calc(33.33% - 8px);
-        text-align: center !important;
-        font-size: 12px !important;
-        padding: 10px 5px !important;
-    }
-
-    /* 3. ESTABILIZACIÓN MAESTRA DE LAS TRES PESTAÑAS (CHROME Y FIREFOX) */
-    .content {
-        padding: 20px 15px !important;
-        overflow-y: visible !important; 
-    }
-
-    .tab-content, #overview.tab-content, #motor.tab-content, #descargas.tab-content {
-        display: none;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: auto !important;
-        height: auto !important;
-        overflow: visible !important;
-        box-sizing: border-box !important;
-    }
-
-    .tab-content.active, #overview.tab-content.active, #motor.tab-content.active, #descargas.tab-content.active {
-        display: flex !important;
-        flex-direction: column !important; /* Todo en columna vertical */
-        gap: 25px !important;
-    }
-
-    .grid-layout, .actions-container {
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-
-    .info-column, .media-column, .action-card {
-        width: 100% !important;
-        flex: none !important;
-    }
-
-    /* 4. DOMADO DE CONTENEDORES PARA EVITAR EL RECORTE EN FIREFOX */
-    .intro-card, .action-card, .media-box, .simulator-box, .media-box-parallel {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important; 
-        height: auto !important;
-        box-sizing: border-box !important;
-    }
-
-    .video-container-parallel {
-        height: auto !important;
-        aspect-ratio: 16 / 9 !important;
-    }
-
-    h2, .section-subtitle, h3 {
-        width: 100% !important;
-        white-space: normal !important;
-    }
-
-    .ide-download-box, .bottom-download {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 15px !important;
-    }
-
-    .download-btn, .winworld-btn, .paypal-btn {
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 5. EL TRUCO DEL ZOOM AL CONTENEDOR DEL CIRCUITO (75% PROPORCIONAL) */
-    /* De esta forma mantenemos las posiciones nativas de PC para que la simulación
-       y las flechas de luz queden soldadas a sus LEDs sin descuadrarse */
+    /* Escalado Matematico Proporcional del Simulador en Móvil Android */
     #motor .simulator-box {
         width: 100% !important;
         max-width: 100% !important;
@@ -635,31 +635,31 @@ h2 {
     }
 
     #motor .simulator-canvas {
-        width: 640px !important;       /* Ancho nativo de referencia */
-        height: 480px !important;      /* Alto nativo de referencia (no se recorta nada) */
+        width: 640px !important;       
+        height: 480px !important;      
         position: relative !important;
         background-color: #ffffff !important;
         
-        /* Encogemos el bloque completo al porcentaje deseado */
+        /* Reducimos todo el bloque en conjunto preservando coordenadas */
         transform: scale(0.55) !important; 
         transform-origin: top center !important; 
-        
-        /* Eliminamos el hueco invisible que deja el zoom abajo */
         margin-bottom: -190px !important; 
     }
 
-    /* Aseguramos que los controles superiores se escalen bien dentro del lienzo */
     #motor .control-panel-top {
         transform: scale(1.15) !important;
         transform-origin: top left !important;
         width: 82% !important;
     }
 
-    /* 6. COMPENSACIÓN DE ENTORNO PARA EL CARRUSEL 3D EN EL FOLIO 3 */
+    /* PARCHE MAESTRO DE TRADUCCIÓN: Desliza elementos hacia arriba en Android */
+    #Light_1, #Light_2, #Light_3, #Light_4, #Light_5, #Light_6 {
+        transform: translateY(-12px) !important; 
+    }
+
+    /* Entorno de proteccion de orbitas para el carrusel 3D */
     #descargas .contenedor-3d {
         margin: 60px auto !important; 
         perspective: 1000px !important;
     }
-
-    }
-
+}
