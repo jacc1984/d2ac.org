@@ -258,7 +258,7 @@ h2 {
 .bottom-download p { margin: 0; font-weight: bold; font-size: 14px; }
 
 /* ==========================================================================
-   PARTE 2 DE 2: MULTIMEDIA, CIRCUITO Y EXCLUSIVOS DE LA TERCERA HOJA
+   PARTE 2 DE 2: MULTIMEDIA, CIRCUITO Y ANIMACIÓN TRIDIMENSIONAL ORBITAL
    ========================================================================== */
 
 /* Multimedia General */
@@ -479,15 +479,17 @@ h2 {
     100% { transform: rotate(360deg); }
 }
 
-/* Módulo del Carrusel 3D (Folio 3) */
+/* ==========================================================================
+   MÓDULO DEL CARRUSEL 3D CORREGIDO: GIRO LIMPICÍSIMO CON ESCALA INDIVIDUAL
+   ========================================================================== */
 #descargas.tab-content {
     overflow: visible !important; 
 }
 
 #descargas .contenedor-3d {
-    perspective: 1200px !important;
+    perspective: 1200px !important; 
     width: 100% !important;
-    height: 300px !important; 
+    height: 320px !important; 
     margin: 40px auto !important;
     display: flex !important;
     justify-content: center !important;
@@ -501,8 +503,6 @@ h2 {
     width: 160px !important;
     height: 160px !important;
     transform-style: preserve-3d !important;
-    transform-origin: center center !important;
-    animation: giroContinuoOSX 12s infinite linear; 
 }
 
 #descargas .escudo {
@@ -513,26 +513,40 @@ h2 {
     height: 160px !important;
     object-fit: contain !important;
     backface-visibility: visible !important;
+    animation-duration: 12s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: linear !important;
 }
 
-#descargas .e1 { transform: rotateY(0deg) translateZ(150px) !important; }
-#descargas .e2 { transform: rotateY(120deg) translateZ(150px) !important; }
-#descargas .e3 { transform: rotateY(240deg) translateZ(150px) !important; }
+/* Vinculamos a cada escudo su animación orbital independiente */
+#descargas .e1 { animation-name: orbitaEscudo1 !important; }
+#descargas .e2 { animation-name: orbitaEscudo2 !important; }
+#descargas .e3 { animation-name: orbitaEscudo3 !important; }
 
-/* Animación Cinemática OS X */
-@keyframes giroContinuoOSX {
-    0% {
-        transform: rotateY(0deg) translateX(0px) scale(1);
-    }
-    33.33% {
-        transform: rotateY(-120deg) translateX(50px) scale(0.85);
-    }
-    66.66% {
-        transform: rotateY(-240deg) translateX(100px) scale(0.75);
-    }
-    100% {
-        transform: rotateY(-360deg) translateX(0px) scale(1);
-    }
+/* 
+   CINEMÁTICA ORBITAL INDIVIDUAL CON RETOQUE DEL 5% EN EL ESCUDO 1 (UPV)
+*/
+@keyframes orbitaEscudo1 {
+    /* Frente: Subimos la escala de 1 a 1.05 (+5% de tamaño para la UPV) */
+    0%   { transform: rotateY(0deg) translateZ(160px) translateX(0px) scale(1.05); z-index: 3; }
+    /* Fondo: Mantiene el escalado extra proporcional (0.63 en vez de 0.6) */
+    33%  { transform: rotateY(120deg) translateZ(120px) translateX(60px) scale(0.63); z-index: 1; }
+    66%  { transform: rotateY(240deg) translateZ(120px) translateX(-60px) scale(0.63); z-index: 1; }
+    100% { transform: rotateY(360deg) translateZ(160px) translateX(0px) scale(1.05); z-index: 3; }
+}
+
+@keyframes orbitaEscudo2 {
+    0%   { transform: rotateY(120deg) translateZ(120px) translateX(60px) scale(0.6); z-index: 1; }
+    33%  { transform: rotateY(240deg) translateZ(120px) translateX(-60px) scale(0.6); z-index: 1; }
+    66%  { transform: rotateY(360deg) translateZ(160px) translateX(0px) scale(1); z-index: 3; }
+    100% { transform: rotateY(480deg) translateZ(120px) translateX(60px) scale(0.6); z-index: 1; }
+}
+
+@keyframes orbitaEscudo3 {
+    0%   { transform: rotateY(240deg) translateZ(120px) translateX(-60px) scale(0.6); z-index: 1; }
+    33%  { transform: rotateY(360deg) translateZ(160px) translateX(0px) scale(1); z-index: 3; }
+    66%  { transform: rotateY(480deg) translateZ(120px) translateX(60px) scale(0.6); z-index: 1; }
+    100% { transform: rotateY(600deg) translateZ(120px) translateX(-60px) scale(0.6); z-index: 1; }
 }
 
 /* Vista Móvil */
@@ -547,4 +561,5 @@ h2 {
         width: 100vw; 
     }
 }
+
 
