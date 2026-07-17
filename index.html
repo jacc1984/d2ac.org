@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDR Motor Control - TeraHertz (c) Projects</title>
+    <link rel="stylesheet" href="style.css?v=1.2">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Barra lateral izquierda con 6 botones -->
+        <aside class="sidebar">
+            <div class="brand-title">
+                <h1>Digital to Analog Converter</h1>
+                <span class="subtitle"><strong class="highlight-brand">TeraHertz</strong>&copy; Projects</span>
+            </div>
+            
+            <nav class="menu">
+                <button class="menu-btn active" onclick="switchTab(event, 'proyecto1')">🔧 LPT DB25 Port Control</button>
+                <button class="menu-btn" onclick="switchTab(event, 'circuito')">⚙️ LDR Motor Control</button>
+                <button class="menu-btn" onclick="switchTab(event, 'mouse-ir')">🖱️ Mouse Pointer IR Control</button>
+                <button class="menu-btn" onclick="switchTab(event, 'openbox')">🐧 Linux Openbox O.S.</button>
+                <button class="menu-btn" onclick="switchTab(event, 'clonezilla')">🦔 Clonezilla HowTo</button>
+                <button class="menu-btn" onclick="switchTab(event, 'descargas')">💰 Support</button>
+            </nav>
+        </aside>
+
+        <!-- Contenido Central Dinámico -->
+        <main class="content">
+            
+            <!-- Folio 1: Proyecto Principal - LPT DB25 Port Control -->
+            <section id="proyecto1" class="tab-content active">
+                <h2>Project Overview</h2>
+                
+                <div class="grid-layout">
+                    <!-- Columna Izquierda: Información -->
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Hey folks! How are you doing?</p>
+                            <p>First of all, sorry for deleting my blog without any sense: <code class="old-blog">://wordpress.com</code>...</p>
+                            <p>So I'm back to upload some cool projects which most of schools would freak it out.</p>
+                            <p>Thanks to some of my friends I discovered a nice library (<strong>inpout32.dll</strong>) compatible with Windows. This library can be installed so its functions could be used under the IDE called <strong>Borland C++ 6.0</strong>.</p>
+                            <p>The applications built with this IDE can also be executed under Linux Operating Systems with <strong>Wine</strong>.</p>
+                            <p>The sources of my work are for free and you could download it just at the bottom of this site.</p>
+                        </div>
+
+                        <div class="ide-download-box">
+                            <p>🔧 Need Borland C++ 6.0 to compile?</p>
+                            <a href="https://winworldpc.com" target="_blank" class="winworld-btn">💿 Get IDE on WinWorld</a>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Multimedia -->
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Screenshot (Widescreen Format)</h3>
+                            <div class="screenshot-container">
+                                <img src="API screenshot.JPG" alt="Application Screenshot" class="screenshot">
+                            </div>
+                        </div>
+                        
+                        <div class="media-box">
+                            <h3>Demonstration Video</h3>
+                            <div class="video-container">
+                                <video controls class="promo-video">
+                                    <source src="API video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de descarga cambiado a formato azul-noir -->
+                <div class="bottom-download">
+                    <p>🚀 Ready to explore the code?</p>
+                    <a href="Data Aqcuisition Card LPT.zip" class="download-btn btn-azul-noir" download>📦 Download Source Code (.ZIP)</a>
+                </div>
+
+                <!-- Tarjeta inferior -->
+                <div class="media-box" style="margin-top: 30px; width: 100%;">
+                    <h3>PRO Acquisition Data Card</h3>
+                    <div class="screenshot-container">
+                        <img src="2026-07-09-144603_1280x800_scrot.png" alt="PRO Acquisition Data Card" class="screenshot">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 2: Simulador de Circuito Interactivo - LDR Motor Control -->
+            <section id="circuito" class="tab-content">
+                <h2>LDR Motor Control</h2>
+                <p class="section-subtitle">Simulate real-time variables and visual responses within the schematic workspace or watch the live demo.</p>
+                
+                <div class="grid-layout match-height">
+                    <!-- Cuadro Izquierdo: El Simulador Activo -->
+                    <div class="simulator-box">
+                        <h3>Interactive Schematic</h3>
+                        <div class="simulator-canvas">
+                            <!-- Base del plano -->
+                            <img id="Schematics" src="Schematics.png" alt="Circuit Schematics">
+                            
+                            <!-- Flechas indicadoras LDR -->
+                            <img id="Light_1" src="LDR_Arrow_Light.jpg" alt="LDR Light 1">
+                            <img id="Light_2" src="LDR_Arrow_Light.jpg" alt="LDR Light 2">
+                            <img id="Light_3" src="LDR_Arrow_Light.jpg" alt="LDR Light 3">
+                            <img id="Light_4" src="LDR_Arrow_Light.jpg" alt="LDR Light 4">
+                            <img id="Light_5" src="LDR_Arrow_Light.jpg" alt="LDR Light 5">
+                            <img id="Light_6" src="LDR_Arrow_Light.jpg" alt="LDR Light 6">
+
+                            <!-- Ventilador CAD Realista lateral -->
+                            <img id="CAD_Fan" src="Sherry_CAD_Fan.png" alt="CAD Fan">
+                            
+                            <!-- El Motor Activo superpuesto en el motor del ESQUEMA -->
+                            <img id="Engine_ON" src="Cropped_Engine(Blued).png" style="visibility: hidden;" alt="Engine ON">
+
+                            <div id="Engine_Center"></div>
+
+                            <!-- Panel de Control Superior -->
+                            <div class="control-panel-top">
+                                <button id="Button_Decrease" class="circuit-btn dec" type="button" onclick="Decrease_Light()">Current (-)</button>
+                                <button id="Button_Increase" class="circuit-btn inc" type="button" onclick="Increase_Light()">Current (+)</button>
+                                <p id="Current_Label">LDR Current 0mA</p>
+                            </div>
+                            
+                            <p id="Clicks_Counter" style="visibility: hidden;">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Cuadro Derecho: Vídeo Hardware -->
+                    <div class="media-box-parallel">
+                        <h3>Hardware Demo Video</h3>
+                        <div class="video-container-parallel" style="display: flex; flex-direction: column; justify-content: center; width: 100%;">
+                            <a href="https://1drv.ms/v/c/d665801db985f9df/IQAADC2RkctJTJUHeMYau0NfAbIt7JceEa-sOdFqGdXkPWo?e=ujkmWP" target="_blank" rel="noopener noreferrer" class="winworld-btn" style="display: flex; justify-content: center; align-items: center; min-height: 80px; width: 100%; box-sizing: border-box; text-decoration: none; text-align: center; font-size: 1.1rem; padding: 15px; border-radius: 6px;">
+                                Watch Demo on OneDrive
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 3: Mouse Pointer IR Control -->
+            <section id="mouse-ir" class="tab-content">
+                <h2>Mouse Pointer IR Control</h2>
+                <p class="section-subtitle">Control your system's mouse pointer using infrared signals and vintage hardware hacking.</p>
+                
+                <div class="grid-layout">
+                    <!-- Columna Izquierda: La Historia y el Desarrollo (Formato Blog) -->
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Hey my friends! Here it is an awesome project that I've been developing since 2019.</p>
+                            <p>The beginning of the project was the automatization of simple tasks under Windows. However, due to the nature of my job at the time, I couldn't even save those auto-tasks. This led me to believe that these kinds of development projects are often rejected in the South of Spain, or maybe even all around the world.</p>
+                            <p>One day, I threw away a non-working DVD Player but I preserved its Remote Control. Within a few days, I noticed that I could easily recycle it!</p>
+                            
+                            <!-- Imagen del Mando Belson -->
+                            <div class="screenshot-container" style="margin: 15px 0; max-width: 300px; aspect-ratio: auto; height: auto;">
+                                <img src="images.jpeg" alt="Belson Remote Control" class="screenshot" style="object-fit: cover;">
+                            </div>
+
+                            <p>Back then, I started decoding IR signals with a 3-pin IR Receiver. I still remember the mnemonic rule for the schematics pinout: <em>"Salgo del Hospital, pongo los pies en la Tierra y me alimento"</em> (Output, GND, and Vcc), read in that exact direction from left to right.</p>
+                            <p>After some weeks programming in C++, I discovered a nice IR Decoder from the Vishay manufacturer. I also found a convenient cable: a USB-TTL to RS232 COM Port adapter.</p>
+                            <p>I finally freaked out when I saw how these magnificent parts (Decoder + Cable) worked straight out of the box with a simple C++ application, reading the inputs of the remote control function signals.</p>
+                        </div>
+
+                        <div class="intro-card">
+                            <p>Obviously, I was supported by the <strong>UPV.net</strong> community, as the COM port cannot be addressed—and even less read—without the cool library implementation owned by that great university (Politechnical University of Valencia). I attached that "applet", which is very easy to install on Borland C++ with this step-by-step guide:</p>
+                            <div class="ide-download-box">
+                                <p>🔗 Official ComPort Installation Guide</p>
+                                <a href="https://upv.es" target="_blank" class="winworld-btn">📖 View Guide on UPV</a>
+                            </div>
+                            <p>After a few weeks testing the IDE and doing hundreds of consultations on Google, I finally managed to control the Mouse Pointer with my custom C++ application.</p>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Multimedia y Enlaces de Descarga -->
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Hardware Components</h3>
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <div class="screenshot-container" style="flex: 1;">
+                                    <img src="download.jpeg" alt="Vishay IR Decoder" class="screenshot">
+                                    <p style="font-size: 0.8rem; text-align: center; margin-top: 5px; color: var(--text-muted, #a0a0a5);">Vishay Device</p>
+                                </div>
+                                <div class="screenshot-container" style="flex: 1;">
+                                    <img src="Untitled.png" alt="USB to TTL Adapter" class="screenshot">
+                                    <p style="font-size: 0.8rem; text-align: center; margin-top: 5px; color: var(--text-muted, #a0a0a5);">USB Adapter</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="media-box">
+                            <h3>Application Interface (XP Compatible)</h3>
+                            <div class="screenshot-container">
+                                <img src="2026-07-12-194444_screenshot.png" alt="XP Application Interface" class="screenshot">
+                            </div>
+                            <div class="bottom-download" style="margin-top: 15px; padding: 0; background: transparent; border-left: none;">
+                                <a href="IR Remote Control 020220.zip" class="download-btn btn-azul-noir" download style="width: 100%; box-sizing: border-box;">📦 Download XP Code (.ZIP)</a>
+                            </div>
+                        </div>
+
+                        <div class="media-box">
+                            <h3>The Modern Era & Java Build</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.4;">Nowadays, there are stunning Remote Control devices featuring compatibility with 64-bit machines. With a few adjustments, you can even get a cool "Wii-Motion" IR Remote Control without any cables needed—just switch it on and pair it via Bluetooth.</p>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.4; margin-top: 10px;">Anyway, I also built a 64-bit compatible Java version of the project:</p>
+                            
+                            <div class="screenshot-container" style="margin-top: 15px; margin-bottom: 15px;">
+                                <img src="2026-07-13-163939_screenshot.png" alt="Java Application Interface" class="screenshot">
+                            </div>
+
+                            <div class="bottom-download" style="margin-top: 15px; padding: 0; background: transparent; border-left: none;">
+                                <a href="JavaApplicationIR_Pointer.zip" class="download-btn btn-azul-noir" download style="width: 100%; box-sizing: border-box;">☕ Download Java Version (.ZIP)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección Inferior Completa: Demostración en Linux Mint -->
+                <div class="media-box" style="margin-top: 30px; width: 100%;">
+                    <h3>Linux Mint Accessibility & Video Demo</h3>
+                    <div class="grid-layout" style="margin-top: 15px; gap: 20px;">
+                        <div style="flex: 1;">
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.5;">In the middle of these builds, I was deeply thanked for embedding this system into an Accessibility Project. Nowadays, we can control the mouse pointer of our computers simply by activating the corresponding "Accessibility" option in the Mint branch of Linux!</p>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.5; margin-top: 10px;">Check out the live system reaction in the video player on the side.</p>
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="video-container">
+                                <video controls class="promo-video">
+                                    <source src="out.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 4: Linux Openbox O.S. -->
+            <section id="openbox" class="tab-content">
+                <h2>Linux Openbox O.S.</h2>
+                <p class="section-subtitle">Revive 32-bit hardware architectures with high-performance desktop custom builds.</p>
+                
+                <div class="grid-layout">
+                    <!-- Columna Izquierda: Documentación e Instrucciones -->
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Since 2010 I'm passionate about deploying 32-bit Linux Operating Systems, because I realized the sound of my system could be incremented by more than 50%.</p>
+                            <p>Through severe optimization, I achieved to start an old netbook in less than 15 seconds! Working hard on this ecosystem—13 years after Microsoft deprecated Windows XP support—there are still some excellent lightweight Linux flavours left to test.</p>
+                            <p>Nowadays, a 32-bit machine might not be a mainstream option, but if you enjoy recovering vintage computers and giving them a second life, this is your best bet to try.</p>
+                        </div>
+
+                        <div class="intro-card">
+                            <p><strong>💿 Installation Guide:</strong></p>
+                            <p>To install this customized .iso, you have to log off from the OpenBox session, log in to the <strong>Cinnamon desktop</strong> environment using the default live credentials:</p>
+                            <p style="margin-left: 10px; font-family: monospace; color: var(--accent-color);">👤 User: mint // 🔑 Password: live</p>
+                            <p>Once inside Cinnamon, easily run the system deployment through the unique installation icon located on the desktop workspace.</p>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Capturas, Vídeos y Descarga Directa -->
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Desktop Workspace View</h3>
+                            <div class="screenshot-container" style="background-color: var(--accent-color, #007acc) !important;">
+                                <img src="Untitled1.png" alt="Openbox Desktop View" class="screenshot" style="background-color: transparent !important; object-fit: contain; padding: 15px; box-sizing: border-box;">
+                            </div>
+                        </div>
+
+                        <div class="media-box">
+                            <h3>Performance Demonstration</h3>
+                            <div class="video-container">
+                                <video controls class="promo-video">
+                                    <source src="out1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque Inferior con información técnica del O.S. y enlace a Drive -->
+                <div class="bottom-download" style="margin-top: 30px;">
+                    <div style="max-width: 70%; padding-right: 15px;">
+                        <p style="font-size: 14px; margin-bottom: 5px;">📦 Linux Mint DE 6 (x86) Custom Build</p>
+                        <p style="font-weight: normal; font-size: 13px; color: var(--text-muted); line-height: 1.4; text-transform: none; letter-spacing: 0px;">
+                            Features a dual desktop build. It includes the ultra-lightweight <strong>Openbox Window Manager</strong>. Perfect for older 32-bit machines to fluidly process 720p HD streaming playbacks under VLC Player.
+                        </p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1M05_EKWvY3MnAJ5nDTGGsmhA4cnFyXfN/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-btn btn-azul-noir" style="white-space: nowrap;">💿 Get ISO on Drive</a>
+                </div>
+            </section>
+
+            <!-- Folio 5: Manual de Clonación - Clonezilla HowTo -->
+            <section id="clonezilla" class="tab-content">
+                <h2>Clonezilla HowTo</h2>
+                <p class="section-subtitle">Learn how to backup, clone, and restore your drives efficiently using open-source tools.</p>
+                
+                <div class="grid-layout">
+                    <!-- Marco Izquierdo: Información y el Logo de Clonezilla -->
+                    <div class="info-column">
+                        <div class="intro-card">
+                            <p>Welcome to the ultimate guide for system deployment and disk imaging!</p>
+                            <p><strong>Clonezilla</strong> is a powerful open-source partition and disk imaging/cloning program designed to help you with bare metal backup and recovery.</p>
+                            <p>In this tutorial, you will find step-by-step instructions to mirror your drives safely, ensuring no data loss during migration or hardware upgrades.</p>
+                        </div>
+
+                        <div class="media-box">
+                            <h3>Clonezilla Software Logo</h3>
+                            <div class="screenshot-container">
+                                <img src="download1.jpeg" alt="Clonezilla Logo" class="screenshot">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Siguiente Marco Derecho: Vídeo out-2.mp4 -->
+                    <div class="media-column">
+                        <div class="media-box">
+                            <h3>Video Tutorial Walkthrough</h3>
+                            <div class="video-container">
+                                <video controls class="promo-video">
+                                    <source src="out-2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folio 6: Support & Donations -->
+            <section id="descargas" class="tab-content">
+                <h2>Support & Donations</h2>
+                <p class="section-subtitle">If you like these projects, consider supporting my work.</p>
+                
+                <div class="actions-container">
+                    <div class="action-card">
+                        <h3>Support TeraHertz Projects</h3>
+                        <p>Your support helps maintain the site online and funds new open-source hardware and accessibility research designs.</p>
+                        
+                        <div class="gift-note">
+                            🎁 Every single donation grants you access to <strong>premium blueprints</strong> and direct technical support.
+                        </div>
+
+                        <!-- Botón Mecánico de Paypal -->
+                        <a href="https://www.paypal.com/paypalme/jocacab" target="_blank" rel="noopener noreferrer" class="paypal-btn">
+                            💸 Donate via PayPal
+                        </a>
+
+                        <span class="paypal-email-backup">
+                            Direct email backup: <code>erkbra</code>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenedor del Carrusel 3D Orbital con tus Escudos Universitarios -->
+                <div class="contenedor-3d">
+                    <div class="carrusel-escudos">
+                        <img src="UNED.png" class="escudo e1" alt="UNED">
+                        <img src="Logo_UCA.png" class="escudo e2" alt="UCA">
+                        <img src="UPV.png" class="escudo e3" alt="UPV">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Enlace al archivo unificado de scripts -->
+    <script src="scripts.js"></script>
+
+</body>
+</html>
